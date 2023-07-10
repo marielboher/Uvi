@@ -13,7 +13,6 @@ import backgroundVideo from "../../assets/video-home.mp4";
 
 //Cards of slider
 import cardCV from "../../assets/cardCV.png";
-import cardLinkedin from "../../assets/cardLinkedin.png";
 import cardInterview from "../../assets/cardInterview.png";
 import cardCVMovile from "../../assets/cardCVMovile.png";
 import cardLinkedinMovile from "../../assets/CardLinkedinMovil.png";
