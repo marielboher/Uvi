@@ -1,0 +1,114 @@
+.contentAll {
+  background-color: #fafafa;
+  width: 100%;
+  height: 270px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.contentText {
+  width: 30%;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 1rem;
+  flex-wrap: wrap;
+}
+.logos {
+  color: #7721bf;
+}
+
+.contentText img {
+  width: 70px;
+  margin-bottom: 1rem;
+}
+
+.contentLinks {
+  display: flex;
+  gap: 1rem;
+}
+
+.links {
+  font-size: 1.2rem;
+}
+
+.contentCreatorCopyright {
+  width: 80%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid #ddd;
+  margin-top: 1rem;
+}
+
+.copyright {
+  font-size: 1rem;
+}
+
+.creator {
+  width: 200px;
+  height: max-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.creator p {
+  margin: 0;
+}
+
+.networks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.networks p {
+  margin: 0;
+}
+
+.networks div {
+  width: 80%;
+  margin-left: 1rem;
+  text-align: center;
+  align-self: center;
+}
+.message {
+  color: #999;
+  font-size: 0.9rem;
+  height: max-content;
+  margin: 0;
+}
+
+.networks h6 {
+  height: max-content;
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+@media (max-width: 700px) {
+  .contentAll {
+    height: 320px;
+  }
+  .contentCreatorCopyright {
+    width: 95%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .copyright {
+    font-size: 1rem;
+    margin: 0;
+  }
+}

@@ -1,0 +1,282 @@
+.contentAll {
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100vh;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.background {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100vh;
+}
+
+.contentSlider {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  justify-content: flex-end;
+  align-items: center;
+  position: absolute;
+  z-index: 2;
+  gap: 100px;
+  overflow: hidden;
+}
+
+.contentImages {
+  width: max-content;
+  height: max-content;
+  display: flex;
+  position: absolute;
+}
+
+.contentImages img {
+  width: 500px;
+}
+
+.backgroundVideo {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  background-color: transparent;
+  position: absolute;
+  z-index: 0;
+  height: 100vh;
+  width: 90%;
+  left: 10%;
+  overflow: hidden;
+}
+
+.backgroundVideo video {
+  height: 100vh;
+  position: absolute;
+  top: 5%;
+  animation: loop 40s linear infinite forwards;
+}
+
+@keyframes loop {
+  0% {
+    transform: scale(1.5);
+  }
+  20% {
+    transform: scale(1.5) translateY(15%) translateX(10%);
+  }
+  30% {
+  }
+  40% {
+    transform: scale(1.5) translateY(10%) translateX(-15%);
+  }
+  50% {
+  }
+  60% {
+    transform: scale(1.5) translateY(-10%) translateX(-15%);
+  }
+  70% {
+  }
+  80% {
+    transform: scale(1.5) translateY(-10%) translateX(15%);
+  }
+  90% {
+  }
+
+  100% {
+    transform: scale(1.5);
+  }
+}
+
+.title {
+  width: 120px;
+}
+
+.contentInfo {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  z-index: 2;
+}
+
+.contentInfo h6 {
+  font-size: 1.2rem;
+  width: 40%;
+  margin: 0;
+  text-align: center;
+  font-weight: 100;
+  color: #fff;
+}
+
+.contentButtons {
+  height: max-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10%;
+}
+/* .contentButtons button{
+  border: none;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+} */
+
+.buttonServices {
+  border: none;
+  border-radius: 40px;
+  font-size: 1rem;
+  background: #fafafa;
+  color: #b154ff;
+  font-weight: 100;
+  padding: 0.4rem 1rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+.buttonAbout {
+  border: none;
+  border-radius: 40px;
+  font-size: 1rem;
+  background: #9c31f6;
+  color: #fff;
+  font-weight: 100;
+  padding: 0.4rem 1rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+.buttonAbout:hover,
+.buttonServices:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 15px rgba(0, 0, 0, 0.25);
+}
+
+.fondo {
+  width: 50%;
+}
+
+/* @media (max-width: 1200px) {
+  .backgroundVideo video {
+    position: absolute;
+    left: -50%;
+    top: 40%;
+  }
+} */
+
+@media (max-width: 700px) {
+  .contentAll {
+    justify-content: center;
+    align-items: flex-end;
+    padding: 0;
+    width: 100vw;
+    overflow: hidden;
+  }
+  .contentSlider {
+    left: 30%;
+    width: 70%;
+    height: 100vh;
+  }
+
+  .contentImages img {
+    width: 250px;
+  }
+
+  .backgroundVideo {
+    left: 0%;
+    width: 100%;
+  }
+
+  .backgroundVideo video {
+    position: static;
+    z-index: 0;
+    height: 100%;
+  }
+
+  .title {
+    display: none;
+  }
+
+  .contentInfo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    width: 100%;
+    height: 30vh;
+    position: absolute;
+  }
+
+  .contentInfo h6 {
+    font-size: 1rem;
+    text-align: center;
+    width: 80%;
+    margin: 0;
+    font-weight: 100;
+    color: #fff;
+  }
+
+  .contentButtons {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 5%;
+    margin-top: 1rem;
+  }
+
+  .buttonServices {
+    text-align: center;
+    margin: 0;
+  }
+
+  .buttonAbout {
+    margin: 0;
+  }
+
+  .fondo {
+    display: none;
+  }
+
+  .backgroundVideo video {
+    position: absolute;
+    left: -50%;
+    top: 40%;
+  }
+
+  @keyframes loop {
+    0% {
+      transform: scale(1.5);
+    }
+    20% {
+      transform: scale(1.5) translateY(5%) translateX(15%);
+    }
+    30% {
+    }
+    40% {
+      transform: scale(1.5) translateY(5%) translateX(-50%);
+    }
+    50% {
+    }
+    60% {
+      transform: scale(1.5) translateY(-40%) translateX(-50%);
+    }
+    70% {
+    }
+    80% {
+      transform: scale(1.5) translateY(-20%) translateX(15%);
+    }
+    90% {
+    }
+
+    100% {
+      transform: scale(1.5);
+    }
+  }
+}
