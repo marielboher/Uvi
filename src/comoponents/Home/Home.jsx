@@ -12,11 +12,12 @@ import backgroundVideo from "../../assets/video-home.mp4";
 //backgrounds
 
 //Cards of slider
-import cardCV from "../../assets/cardCV.png";
-import cardInterview from "../../assets/cardInterview.png";
-import cardCVMovile from "../../assets/cardCVMovile.png";
-import cardLinkedinMovile from "../../assets/CardLinkedinMovil.png";
-import cardInterviewMovile from "../../assets/CardInterviewMovil.png";
+import cardCV from "../../assets/card-cv.png";
+import cardLinkedin from "../../assets/card-linkedin.png";
+import cardInterview from "../../assets/cardinterview.png";
+import cardCVMovile from "../../assets/card-cv-movile.png";
+import cardLinkedinMovile from "../../assets/cardLinkedinMovil.png";
+import cardInterviewMovile from "../../assets/cardInterviewMovil.png";
 import { useServices } from "../../context/ServiceContext";
 //Cards of slider
 
