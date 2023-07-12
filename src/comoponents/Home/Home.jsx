@@ -22,7 +22,8 @@ import { useServices } from "../../context/ServiceContext";
 //Cards of slider
 
 export default function Home() {
-  const { handleCompanyClick, handleProfessionalClick } = useServices();
+  const { handleCompanyClick, handleProfessionalClick, setActiveButton } =
+    useServices();
 
   let background = backgroundHome;
   if (innerWidth > 1200) background = backgroundHome;
@@ -144,7 +145,7 @@ export default function Home() {
         <div className={style.contentButtons}>
           <Link to="services">
             <button
-              onClick={handleProfessionalClick}
+              onClick={()=>{handleProfessionalClick(); setActiveButton(false)}}
               spy={true}
               smooth={true}
               offset={-20}

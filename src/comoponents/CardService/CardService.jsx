@@ -10,7 +10,7 @@ export default function CardService({
   renderForm,
   descriptionResume,
   descriptionComplete,
-  includes
+  includes,
 }) {
   const [showMore, setShowMore] = useState(isOpen || false);
 
@@ -29,28 +29,31 @@ export default function CardService({
           onClick={() => [functionChangue(number), renderForm(false)]}
         />
       </div>
-
-      <div className={style.infoMore}>
-        {showMore ? (
-          <div className={style.infoMoreContent}>
-            {descriptionComplete}
-            {includes}
-          </div>
-        ) : (
-          <div className={style.textInfo}>
-            {descriptionResume}
-            <button onClick={toggleDescription}>Leer más</button>
-          </div>
-        )}
+      <div className={style.buttonsContainer} data-isOpen={isOpen}>
+        <div className={style.infoMore} data-isOpen={isOpen}>
+          {showMore ? (
+            <div className={style.infoMoreContent} data-isOpen={isOpen}>
+              {descriptionComplete}
+              {includes}
+              <button className={style.showMoreButton} onClick={toggleDescription}>Leer menos</button>
+            </div>
+          ) : (
+            <div className={style.textInfo}>
+              {descriptionResume}
+              <button className={style.showMoreButton} onClick={toggleDescription}>Leer más</button>
+            </div>
+          )}
+        </div>
+        <button
+          onClick={() => {
+            renderForm(true);
+          }}
+          className={style.buttonSolicited}
+          data-isOpen={isOpen}
+        >
+          Solicitar
+        </button>
       </div>
-      <button
-        onClick={() => {
-          renderForm(true);
-        }}
-        className={style.buttonSolicited}
-      >
-        Solicitar
-      </button>
     </div>
   );
 }
