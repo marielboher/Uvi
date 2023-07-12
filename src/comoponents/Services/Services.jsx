@@ -17,6 +17,7 @@ export default function Services() {
 
   const [selectedRevision, setSelectedRevision] = useState(null);
   const [selectedArmado, setSelectedArmado] = useState(null);
+  const [noCVChecked, setNoCVChecked] = useState(false);
 
   const [services, setServices] = useState([
     {
@@ -83,10 +84,9 @@ export default function Services() {
         "Apellido",
         "Correo electrónico",
         "Número de WhatsApp",
-        "No tengo CV",
         "Preferencias/Observaciones",
       ],
-      additionalFields: ["Adjuntar CV"],
+      additionalFields: ["No tengo CV", "Adjuntar CV"],
     },
     {
       number: 4,
@@ -107,9 +107,8 @@ export default function Services() {
         "Correo electrónico",
         "Número de WhatsApp",
         "Preferencias/Observaciones",
-        "No tengo perfil de LinkedIn",
       ],
-      additionalFields: ["Dirección del perfil de LinkedIn"],
+      additionalFields: ["No tengo perfil de LinkedIn", "Dirección del perfil de LinkedIn"],
     },
   ]);
 
@@ -130,15 +129,40 @@ export default function Services() {
             <input type="text" />
           </div>
         ))}
-        {additionalFields.map((field) => (
-          <div className={style.formServices} key={field}>
-            <label>{field}:</label>
-            <input type={field === "Adjuntar CV" ? "file" : "text"} />
-          </div>
-        ))}
+        {additionalFields.map((field) => {
+          if (field === "No tengo CV") {
+            return (
+              <div className={style.formServices} key={field}>
+                <label>
+                  <input
+                    type="checkbox"
+                    checked={noCVChecked}
+                    onChange={() => setNoCVChecked(!noCVChecked)}
+                  />
+                  {field}
+                </label>
+              </div>
+            );
+          } else if (field === "Adjuntar CV") {
+            return (
+              <div className={style.formServices} key={field}>
+                <label>{field}:</label>
+                <input type="file" disabled={noCVChecked} />
+              </div>
+            );
+          } else {
+            return (
+              <div className={style.formServices} key={field}>
+                <label>{field}:</label>
+                <input type="text" />
+              </div>
+            );
+          }
+        })}
       </div>
     );
   }
+
   return (
     <div className={style.contentAll} id="services">
       <div className={style.barra}></div>
@@ -200,7 +224,7 @@ export default function Services() {
           })}
           {!isProfessional && <CardCompany />}
         </Reorder.Group>
-        {activeButton && isProfessional && renderForm() }
+        {activeButton && isProfessional && renderForm()}
         {selectedService && <div className={style.formWrapper}></div>}
         <div className={style.donacion}>
           La donación sugerida se calcula en base a los recursos y esfuerzo
