@@ -32,7 +32,6 @@ export default function Home() {
   else if (innerWidth <= 700 && innerWidth > 400)
     background = backgroundHomeMovile;
   else if (innerWidth <= 400) background = backgroundHomeMovileLow;
-
   return (
     <div className={style.contentAll} id="home">
       <img src={background} alt="" className={style.background} />
@@ -145,7 +144,10 @@ export default function Home() {
         <div className={style.contentButtons}>
           <Link to="services">
             <button
-              onClick={()=>{handleProfessionalClick(); setActiveButton(false)}}
+              onClick={() => {
+                handleProfessionalClick();
+                setActiveButton(false);
+              }}
               spy={true}
               smooth={true}
               offset={-20}
