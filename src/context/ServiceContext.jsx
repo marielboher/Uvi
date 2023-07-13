@@ -33,6 +33,7 @@ export const ServiceContext = ({ children }) => {
       value={{
         selectedService,
         setSelectedService,
+        setIsProfessional,
         activeButton,
         setActiveButton,
         toggleService,

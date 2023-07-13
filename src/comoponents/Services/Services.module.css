@@ -37,7 +37,6 @@
   justify-content: center;
   gap: 35px;
   padding: 2rem 0;
-  border-radius: 10px;
 }
 
 .titleCard {
@@ -47,91 +46,47 @@
   margin: 0;
 }
 
-.subtitleCard {
-  font-size: 1.3rem;
-  color: #fff;
-  text-align: center;
-  width: 80%;
-}
 
-.contentCards {
+.containerServices {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  margin-block: 0;
-  padding-inline-start: 0;
-  margin-top: 2rem;
-  gap: 0.5rem;
-  height: 360px auto;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0px;
+  border-radius: 15px;
 }
 
-.contentAll span {
-  color: #fff;
-  font-size: 1.3rem;
-  text-align: center;
-  margin-bottom: 1rem;
+.containerButtons {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: row;
 }
 
-.buttonDonate {
+.selectedButton {
   border: none;
-  width: 150px;
+  width: 308px;
   font-size: 1rem;
   font-weight: bold;
   height: 40px;
   padding: 0.5rem 1rem;
   text-align: center;
-  border-radius: 20px;
   cursor: pointer;
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
   background-color: #fff;
-}
-.formContainer {
-  width: 50%;
-  border-radius: 10px;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 20px;
-  margin-top: 30px;
-  background-color: #fff;
-}
-.formServices{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.formServices input{
-  border-radius: 10px;
-  box-shadow: 0 0 0px 2px rgba(0, 0, 0, 0.06);
-  border: none;
+  color: #7721bf;
   padding: 10px;
-}
-.formServices input:focus{
-  outline: none;
-}
-.formServices label{
-  font-size: 1rem;
-  margin-bottom: 10px;
-  padding: 10px;
-}
-#includes-list {
-  list-style-type: none;
-  padding: 0;
 }
 
-#includes-list li {
-  margin-bottom: 10px;
-}
-.donacion{
-  width: 70%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+.noSelectedButton {
+  background-color: #9c31f6;
+  border: none;
+  width: 308px;
+  font-size: 1rem;
+  font-weight: bold;
+  height: 40px;
+  padding: 0.5rem 1rem;
   text-align: center;
-  font-size: 17px;
+  cursor: pointer;
+  padding: 10px;
   color: #fff;
 }

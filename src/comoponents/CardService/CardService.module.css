@@ -8,14 +8,14 @@
   justify-content: space-between;
   align-items: flex-start;
   flex-wrap: wrap;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+
 }
 
 .contentAll[data-isOpen="true"] {
-  height: 220px;
+  min-height: 250px;
+  height: 520px auto;
   padding: 0 10px 10px 10px;
-  max-height: 250px;
-  overflow: auto;
-  overflow-y: none;
 }
 
 .contentPrimary {
@@ -26,12 +26,11 @@
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  overflow: hidden;
-  z-index: 2;
   background-color: #fff;
   padding-top: 8px;
   padding: 8px;
 }
+
 
 .contentAll input {
   appearance: none;
@@ -68,6 +67,7 @@
   align-items: center;
   flex-wrap: nowrap;
   flex-direction: column;
+  height: 550px;
 }
 
 .infoMoreContent[data-isOpen="false"] {

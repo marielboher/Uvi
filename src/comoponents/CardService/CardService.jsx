@@ -35,7 +35,7 @@ export default function CardService({
             <div className={style.infoMoreContent} data-isOpen={isOpen}>
               {descriptionComplete}
               {includes}
-              <button className={style.showMoreButton} onClick={toggleDescription}>Leer menos</button>
+              <button className={style.showMoreButton} onClick={toggleDescription} >Leer menos</button>
             </div>
           ) : (
             <div className={style.textInfo}>

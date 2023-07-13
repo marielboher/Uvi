@@ -4,9 +4,9 @@
     align-items: center;
     justify-content: center;
     background-color: #fff;
-    border-radius: 10px;
+    border-radius: 0 0 10px 10px; 
     height: 800px;
-    width: 400px;
+    width: 616px;
 }
 .form label{
     margin-bottom: 5px;
