@@ -13,8 +13,7 @@
 }
 
 .contentAll[data-isOpen="true"] {
-  min-height: 250px;
-  height: 520px auto;
+  height:  auto;
   padding: 0 10px 10px 10px;
 }
 
