@@ -65,20 +65,22 @@ export default function About({ receiveDataAbout }) {
 
   return (
     <div className={style.contentAll} id="about" ref={aboutRef}>
-      <div className={style.barra}></div>
-      <h3>Nosotros</h3>
-      <p className={style.description}>
-        En nuestra plataforma de asesorías laborales, nos dedicamos a ofrecer
-        servicios especializados para ayudarte a potenciar tu éxito profesional.
-        Nuestro enfoque se centra en tres áreas clave: la mejora de tu
-        currículum vitae (CV), la optimización de tu perfil de LinkedIn y la
-        preparación para entrevistas laborales. Contamos con un equipo de
-        expertos en recursos humanos dispuestos a brindarte asesoramiento
-        personalizado y estratégico, diseñado para resaltar tus fortalezas y
-        diferenciarte en el competitivo mercado laboral actual. Confía en
-        nosotros para alcanzar tus objetivos profesionales y dar el siguiente
-        paso en tu carrera.
-      </p>
+      <dic className={style.containerInfoAbout}>
+        <div className={style.barra}></div>
+        <h3>Nosotros</h3>
+        <p className={style.description}>
+          En nuestra plataforma de asesorías laborales, nos dedicamos a ofrecer
+          servicios especializados para ayudarte a potenciar tu éxito profesional.
+          Nuestro enfoque se centra en tres áreas clave: la mejora de tu
+          currículum vitae (CV), la optimización de tu perfil de LinkedIn y la
+          preparación para entrevistas laborales. Contamos con un equipo de
+          expertos en recursos humanos dispuestos a brindarte asesoramiento
+          personalizado y estratégico, diseñado para resaltar tus fortalezas y
+          diferenciarte en el competitivo mercado laboral actual. Confía en
+          nosotros para alcanzar tus objetivos profesionales y dar el siguiente
+          paso en tu carrera.
+        </p>
+      </dic>
       <div className={style.containerCardTeam}>
         {teamData.map((member) => (
           <Team
@@ -91,23 +93,23 @@ export default function About({ receiveDataAbout }) {
         ))}
       </div>
       <div className={style.containerCardReview}>
-     <div className={style.titleReview}>
-        <div className={style.barra}></div>
-          <h3>Reseñas</h3>
-     </div>
-     <div className={style.cardsReview}>
-          {teamReviews.map((review) => (
-            <CardReview
-              key={review.nombre}
-              nombre={review.nombre}
-              servicios={review.servicios}
-              experiencia={review.experiencia}
-              profesion={review.profesion}
-              linkedin={review.linkedin}
-              foto={review.foto}
-            />
-          ))}
-     </div>
+        <div className={style.titleReview}>
+            <div className={style.barra}></div>
+              <h3>Reseñas</h3>
+        </div>
+        <div className={style.cardsReview}>
+              {teamReviews.map((review) => (
+                <CardReview
+                  key={review.nombre}
+                  nombre={review.nombre}
+                  servicios={review.servicios}
+                  experiencia={review.experiencia}
+                  profesion={review.profesion}
+                  linkedin={review.linkedin}
+                  foto={review.foto}
+                />
+              ))}
+        </div>
       </div>
     </div>
   );
