@@ -168,55 +168,57 @@ const ProfesionalService = () => {
 
   return (
     <div className={style.cardServices}>
-      <p className={style.subtitleCard}>
-        Contamos con diferentes servicios diseñados para ayudarte a mejorar tus
-        oportunidades y posibilidades de conseguir el empleo que estás buscando.
-        Te invitamos a que los descubras y elijas los que se ajusten a tus
-        necesidades actuales.
-      </p>
-      <Reorder.Group
-        axis="y"
-        values={services.map((service) => service.number)}
-        onReorder={(values) =>
-          setServices(
-            values.map((value, index) => ({
-              ...services.find((service) => service.number === value),
-              number: index + 1,
-            }))
-          )
-        }
-        className={style.contentCards}
-      >
-        {services.map((service) => {
-          const isRevisionSelected = selectedRevision === service.number;
-          const isArmadoSelected = selectedArmado === service.number;
-
-          const isDisabled =
-            (isRevisionSelected && service.text.includes("Revisión")) ||
-            (isArmadoSelected && service.text.includes("Armado"));
-
-          return (
-            <Reorder.Item key={service.number} value={service.number}>
-              {isProfessional && (
-                <CardService
-                  isOpen={selectedService === service.number}
-                  number={service.number}
-                  functionChangue={toggleService}
-                  character={service.text}
-                  renderForm={setActiveButton}
-                  descriptionResume={service.descriptionResume}
-                  descriptionComplete={service.descriptionComplete}
-                  includes={service.includes}
-                  isDisabled={isDisabled}
-                />
-              )}
-            </Reorder.Item>
+      <div className={style.subtitleCard}>
+        <p >
+          Contamos con diferentes servicios diseñados para ayudarte a mejorar tus
+          oportunidades y posibilidades de conseguir el empleo que estás buscando.
+          Te invitamos a que los descubras y elijas los que se ajusten a tus
+          necesidades actuales.
+        </p>
+      </div>
+        <Reorder.Group
+          axis="y"
+          values={services.map((service) => service.number)}
+          onReorder={(values) =>
+            setServices(
+              values.map((value, index) => ({
+                ...services.find((service) => service.number === value),
+                number: index + 1,
+              }))
+            )
+          }
+          className={style.contentCards}
+        >
+          {services.map((service) => {
+            const isRevisionSelected = selectedRevision === service.number;
+            const isArmadoSelected = selectedArmado === service.number;
+  
+            const isDisabled =
+              (isRevisionSelected && service.text.includes("Revisión")) ||
+              (isArmadoSelected && service.text.includes("Armado"));
+  
+            return (
+              <Reorder.Item key={service.number} value={service.number}>
+                {isProfessional && (
+                  <CardService
+                    isOpen={selectedService === service.number}
+                    number={service.number}
+                    functionChangue={toggleService}
+                    character={service.text}
+                    renderForm={setActiveButton}
+                    descriptionResume={service.descriptionResume}
+                    descriptionComplete={service.descriptionComplete}
+                    includes={service.includes}
+                    isDisabled={isDisabled}
+                  />
+                )}
+              </Reorder.Item>
           );
         })}
         {!isProfessional && <CardCompany />}
         {activeButton && isProfessional && renderForm()}
       </Reorder.Group>
-      <button className={style.buttonDonate}>Donar</button>
+      <div className={style.containerBtn}><button className={style.buttonDonate}>Donar</button></div>
     </div>
   );
 };

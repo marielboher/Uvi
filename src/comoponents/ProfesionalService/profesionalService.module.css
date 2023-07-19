@@ -18,7 +18,7 @@
     justify-content: space-around;
     background-color: #fff;
     height: auto 60vh;
-    padding: 50px;
+    padding: 5%;
     border-radius: 0 0 10px 10px;
 }
 
@@ -41,7 +41,7 @@
     cursor: pointer;
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
     background-color: #fff;
-    margin-top: 50px;
+    margin: 50px 0 50px 0;
 }
 
 .formContainer {
@@ -105,4 +105,22 @@
     color: black;
     text-align: center;
     width: 80%;
+}
+
+@media (max-width: 450px) {
+    .cardServices {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        background-color: #fff;
+        height: auto 60vh;
+        padding: 0%;
+        border-radius: 0 0 10px 10px;
+
+    }
+
+    .subtitleCard {
+        margin-top: 5%;
+    }
 }
