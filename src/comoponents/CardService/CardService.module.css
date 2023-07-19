@@ -67,7 +67,7 @@
   align-items: center;
   flex-wrap: nowrap;
   flex-direction: column;
-  height: 550px;
+  /* height: 550px; */
 }
 
 .infoMoreContent[data-isOpen="false"] {

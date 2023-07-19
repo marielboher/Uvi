@@ -5,8 +5,10 @@
     justify-content: center;
     background-color: #fff;
     border-radius: 0 0 10px 10px; 
-    height: 900px;
-    width: 616px;
+    height: 100%;
+    width: 100%;
+    padding-top: 20px;
+    padding: 20px;
 }
 .form label{
     margin-bottom: 5px;
