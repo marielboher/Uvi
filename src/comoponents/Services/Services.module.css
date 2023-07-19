@@ -73,6 +73,7 @@
   text-align: center;
   cursor: pointer;
   background-color: #fff;
+  border-radius: 10px 10px 0 0px;
   color: #7721bf;
   padding: 10px;
 }
@@ -85,7 +86,7 @@
   font-weight: bold;
   height: 40px;
   padding: 0.5rem 1rem;
-  text-align: center;
+  text-align: center;;
   cursor: pointer;
   padding: 10px;
   color: #fff;
