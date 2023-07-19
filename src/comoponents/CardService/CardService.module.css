@@ -13,11 +13,8 @@
 }
 
 .contentAll[data-isOpen="true"] {
-<<<<<<< HEAD
   height: auto;
-=======
   height:  auto;
->>>>>>> da6494dae60fb1c5e60167052f26cd2f54257219
   padding: 0 10px 10px 10px;
 }
 
