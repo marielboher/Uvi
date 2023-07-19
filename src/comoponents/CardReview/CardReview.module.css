@@ -6,7 +6,7 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 50%;
   margin-left: 25%;
-  height: auto;
+  height: 100%;
   margin-bottom: 15px;
   margin-top: 10px;
   border-radius: 10px;
@@ -43,9 +43,18 @@
 
 @media (max-width: 700px) {
   .contentAll {
-    width: 60%;
-    height: 100px;
+    width: 100%;
+    margin-left: 0;
+    gap: 25px;
+    height: max-content;
+    padding: 20px;
+    transition: none
   }
+
+  .contentAll:hover {
+    transform: none
+  }
+
 
   .contetInfoUser img {
     width: 30px;

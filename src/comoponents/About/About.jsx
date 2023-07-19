@@ -147,7 +147,7 @@ export default function About() {
           <h3>Reseñas</h3>
         </div>
         <div className={style.sliderContainer}>
-          <Slider {...settings}>
+          <Slider {...settings} className={style.sliderStyles}>
             {teamReviews.map((review, index) => (
               <div key={index} className={style.swiperContainer}>
                 <CardReview

@@ -16,6 +16,8 @@
 
 .sliderContainer {
   justify-content: center;
+  height: auto;
+  width: auto;
 }
 
 .containerCardTeam {
@@ -30,21 +32,6 @@
   width: auto;
 }
 
-.slickPrev:before, .slickNext:before {
-  font-family: 'slick';
-  font-size: 20px;
-  line-height: 1;
-  opacity: 1;
-  color: rgb(0, 0, 0);
-}
-
-.slick-prev {
-  background-color: rgb(23, 26, 23); /* Cambia el color de fondo a tu preferencia */
-}
-
-.slick-prev:before {
-  color: rgb(240, 231, 231); /* Cambia el color a tu preferencia */
-}
 .barra {
   width: 50px;
   height: 10px;
@@ -68,7 +55,7 @@
 
 .contentReviws {
   width: 100%;
-  height: 350px;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -87,6 +74,7 @@
 .containerCardReview {
   align-items: center;
   margin-top: 2rem;
+  /* height: 50vh; */
 }
 
 .swiperContainer {
@@ -115,12 +103,12 @@
   margin-bottom: 1rem;
 }
 
-@media (max-width: 700px) {
-  .contentAll {
+ @media (max-width: 700px) {
+.contentAll {
     padding: 2rem;
   }
 
-  .description {
+  /* .description {
     color: #444;
     font-size: 0.8rem;
     text-align: center;
@@ -129,14 +117,14 @@
 
   .contentReviws {
     width: 100%;
-    height: 200px;
+    height: 900px;
     display: flex;
     align-items: center;
     justify-content: center;
 
     padding-bottom: 1rem;
     gap: 0;
-  }
+  } 
 
   .arrow {
     margin: 0 0.5rem;
@@ -149,5 +137,5 @@
     width: 80%;
     height: max-content;
     margin-bottom: 1rem;
-  }
+  }  */
 }
