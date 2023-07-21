@@ -28,10 +28,10 @@ export default function Footer() {
 
       <div className={style.contentLinks}>
         <Link
-          activeClass="active"
+          activeclass="active"
           to="home"
           spy={true}
-          smooth={true}
+          smooth="true"
           offset={0}
           duration={500}
           className={style.links}
@@ -39,10 +39,10 @@ export default function Footer() {
           Inicio
         </Link>
         <Link
-          activeClass="active"
+          activeclass="active"
           to="about"
           spy={true}
-          smooth={true}
+          smooth="true"
           offset={20}
           duration={500}
           className={style.links}
@@ -51,10 +51,10 @@ export default function Footer() {
         </Link>
 
         <Link
-          activeClass="active"
+          activeclass="active"
           to="services"
           spy={true}
-          smooth={true}
+          smooth="true"
           offset={0}
           duration={500}
           className={style.links}
@@ -62,10 +62,10 @@ export default function Footer() {
           Servicios
         </Link>
         <Link
-          activeClass="active"
+          activeclass="active"
           to="contact-us"
           spy={true}
-          smooth={true}
+          smooth="true"
           offset={50}
           duration={500}
           className={style.links}

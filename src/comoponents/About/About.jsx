@@ -130,6 +130,11 @@ export default function About() {
           nosotros para alcanzar tus objetivos profesionales y dar el siguiente
           paso en tu carrera.
         </p>
+        <h2 className={style.subTitle}>Nuestra Mision</h2>
+        <p className={style.description}>
+        Buscamos disminuir la dificultad que tienen muchas personas por diferentes razones para acceder a oportunidades laborales. Promovemos la idea de que el talento y los valores éticos son las cualidades más importantes de un profesional. Creemos que una adecuada orientación conducen al éxito de los profesionales y empresas y que una relación de compromiso y honestidad mutua son la clave para sostenerlo en el tiempo.
+        </p>
+        <h2 className={style.subTitle}>Nuestro Equipo:</h2>
       </div>
       <div className={style.containerCardTeam}>
         {teamData.map((member) => (
@@ -144,6 +149,7 @@ export default function About() {
       </div>
       <div className={style.containerCardReview}>
         <div className={style.titleReview}>
+        <div className={style.barra}></div>
           <h3>Reseñas</h3>
         </div>
         <div className={style.sliderContainer}>

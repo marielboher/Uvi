@@ -149,11 +149,11 @@ export default function Home() {
                 setActiveButton(false);
               }}
               spy={true}
-              smooth={true}
+              smooth="true"
               offset={-20}
               duration={500}
               className={style.buttonServices}
-              activeClass="active"
+              activeclass="active"
             >
               Profesional
             </button>
@@ -161,9 +161,9 @@ export default function Home() {
           <Link to="services">
             <button
               onClick={handleCompanyClick}
-              activeClass="services"
+              activeclass="services"
               spy={true}
-              smooth={true}
+              smooth="true"
               offset={20}
               duration={500}
               className={style.buttonAbout}

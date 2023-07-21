@@ -8,9 +8,9 @@ export const useServices = () => {
 };
 
 export const ServiceContext = ({ children }) => {
-  const [selectedService, setSelectedService] = useState();
   const [activeButton, setActiveButton] = useState(false);
   const [isProfessional, setIsProfessional] = useState(true);
+  const [selectedService, setSelectedService] = useState([]);
 
   const handleProfessionalClick = () => {
     setIsProfessional(true);

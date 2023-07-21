@@ -27,10 +27,10 @@ export default function Navbar({ dataAboutPosition }) {
       />
       {dataAboutPosition < 100 ? (
         <Link
-          activeClass="active"
+          activeclass="active"
           to="home"
           spy={true}
-          smooth={true}
+          ssmooth="true"
           offset={0}
           duration={500}
           className={style.links}
@@ -40,10 +40,10 @@ export default function Navbar({ dataAboutPosition }) {
       ) : (
         <div className={style.contentLogo}>
           <Link
-            activeClass="active"
+            activeclass="active"
             to="home"
             spy={true}
-            smooth={true}
+            ssmooth="true"
             offset={0}
             duration={500}
             className={style.links}
@@ -62,10 +62,10 @@ export default function Navbar({ dataAboutPosition }) {
           onClick={() => setVistPhone(false)}
         />
         <Link
-          activeClass="active"
+          activeclass="active"
           to="home"
           spy={true}
-          smooth={true}
+          ssmooth="true"
           offset={0}
           duration={500}
           onClick={() => setVistPhone(false)}
@@ -73,10 +73,10 @@ export default function Navbar({ dataAboutPosition }) {
           <img src={logo2} alt="" className={style.logoMovile} />
         </Link>
         <Link
-          activeClass="active"
+          activeclass="active"
           to="about"
           spy={true}
-          smooth={true}
+          ssmooth="true"
           offset={20}
           duration={500}
           className={style.links}
@@ -86,10 +86,10 @@ export default function Navbar({ dataAboutPosition }) {
         </Link>
 
         <Link
-          activeClass="active"
+          activeclass="active"
           to="services"
           spy={true}
-          smooth={true}
+          ssmooth="true"
           offset={-20}
           duration={500}
           className={style.links}
@@ -99,10 +99,10 @@ export default function Navbar({ dataAboutPosition }) {
         </Link>
 
         <Link
-          activeClass="active"
+          activeclass="active"
           to="contact-us"
           spy={true}
-          smooth={true}
+          ssmooth="true"
           offset={0}
           duration={500}
           className={style.links}
