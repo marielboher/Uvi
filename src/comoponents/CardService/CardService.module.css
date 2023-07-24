@@ -128,3 +128,42 @@
 .contentAll::-webkit-scrollbar-thumb:hover {
   background-color: #7a1bb5;
 }
+
+
+@media (max-width: 650px) {
+  .contentAll {
+    background-color: #fff;
+    width: 400px;
+    height: 40px;
+    overflow: hidden;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+  
+  }
+}
+
+@media (max-width: 450px) {
+  .contentAll {
+    background-color: #fff;
+    width: 300px;
+    height: 40px;
+    overflow: hidden;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+  
+  }
+  .title {
+    font-size: 0.9rem;
+    margin: 0;
+    font-weight: bold;
+  }
+  
+}

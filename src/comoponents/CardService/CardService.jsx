@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./CardService.module.css";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { useServices } from "../../context/ServiceContext";
@@ -12,27 +12,36 @@ export default function CardService({
   descriptionComplete,
   includes,
   service,
-  serviceCheck
+  services,
+  setCheckState,
 }) {
   const [showMore, setShowMore] = useState(isOpen || false);
   const [isChecked, setIsChecked] = useState(false);
   const { toggleService, selectedService, setSelectedService } = useServices();
-  // const [serviceChecked, setServiceChecked] = useState(selectedService);
-  //hacer un array pusheando lo seleccionado y comparar numero agregar checked en padre
-  console.log("selectedService", selectedService);
+  const [serviceSelected, setServiceSelected] = useState(service.check);
 
   const toggleDescription = () => {
     setShowMore(!showMore);
   };
-  const handleCheckboxChange = () => {
-    console.log("character", character);
-    console.log("service", service);
+  const handleCheckboxChange = (itemID) => {
+    console.log(itemID);
+    if (itemID == 1) {
+      services[2].check = false;
+      setCheckState(false);
+      setIsChecked(false);
+    }
     setIsChecked(!isChecked);
+    service.check = !service.check;
+  };
+
+  const handleChecked = () => {
+    setIsChecked(false);
   };
 
   const handleSolicitar = () => {
     renderForm(true);
-    setIsChecked(true);
+    setIsChecked(!isChecked);
+    service.check = true;
   };
   return (
     <div className={style.contentAll} data-isopen={isOpen}>
@@ -40,7 +49,9 @@ export default function CardService({
         <input
           type="checkbox"
           checked={isChecked}
-          onChange={handleCheckboxChange}
+          onChange={() => {
+            handleCheckboxChange(number);
+          }}
         />{" "}
         <h6 className={style.title}>{character}</h6>
         <IoIosArrowDown

@@ -240,3 +240,18 @@
     width: 100%;
   }
 }
+
+
+@media (max-width: 500px) {
+  .contentTitle h6 {
+    font-size: 1.8rem;
+    padding: 20px;
+  }
+  
+  .contentTitle p {
+    color: #444;
+    margin-bottom: 2rem;
+    text-align: start;
+    padding: 20px;
+  }
+}

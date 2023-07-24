@@ -6,14 +6,32 @@ import { Reorder } from "framer-motion";
 import CardCompany from "../CardCompany/CardCompany";
 
 const ProfesionalService = () => {
-  const { activeButton, setActiveButton, isProfessional, selectedService } =
-    useServices();
+  const {
+    activeButton,
+    setActiveButton,
+    isProfessional,
+    selectedService,
+    setSelectedService,
+  } = useServices();
 
+  // Resto del código
+
+  const handleSolicitService = (serviceNumber) => {
+    if (selectedService === serviceNumber) {
+      // Si el mismo servicio está seleccionado, deseleccionarlo
+      setSelectedService(null);
+    } else {
+      // Si se selecciona otro servicio, cambiar el estado
+      setSelectedService(serviceNumber);
+    }
+  };
+const [checkState , setCheckState] = useState(false)
+  // Resto del código
   const [services, setServices] = useState([
     {
       number: 1,
       text: "Revisión de CV",
-      check: false,
+      check: checkState,
       descriptionResume:
         "Nos enfocamos en optimizar el contenido, formato y estructura de tu CV a través de comentarios e información detallada.",
       descriptionComplete:
@@ -42,7 +60,7 @@ const ProfesionalService = () => {
     },
     {
       number: 2,
-      check: false,
+      check: checkState,
       text: "Revisión de perfil de LinkedIn",
       descriptionResume:
         "Mejoramos tu perfil de LinkedIn brindando recomendaciones para optimizar tu visibilidad, destacar logros, potenciar tu marca personal y aumentar tus oportunidades de networking.",
@@ -71,7 +89,7 @@ const ProfesionalService = () => {
     },
     {
       number: 3,
-      check: false,
+      check: checkState,
 
       text: "Armado de CV",
       descriptionResume:
@@ -102,7 +120,7 @@ const ProfesionalService = () => {
     },
     {
       number: 4,
-      check: false,
+      check: checkState,
 
       text: "Armado de perfil de LinkedIn",
       descriptionResume:
@@ -132,7 +150,7 @@ const ProfesionalService = () => {
     },
     {
       number: 5,
-      check: false,
+      check: checkState,
 
       text: "Armado de carta de presentación",
       descriptionResume:
@@ -162,8 +180,7 @@ const ProfesionalService = () => {
     },
     {
       number: 6,
-      check: false,
-
+      check: checkState,
       text: "Entrenamiento para entrevistas",
       descriptionResume:
         "Te preparamos para destacar en entrevistas mediante sesiones personalizadas para mejorar tu comunicación, respuestas y lenguaje corporal",
@@ -193,8 +210,7 @@ const ProfesionalService = () => {
     },
     {
       number: 7,
-      check: false,
-
+      check: checkState,
       text: "Guía de prompts de Chat GPT",
       descriptionResume:
         "La guía de prompts de Chat GPT para profesionales en búsqueda de empleo ofrece una variedad de preguntas predefinidas para utilizar en conversaciones con el modelo de Chat GPT y recibir respuestas relevantes durante el proceso de búsqueda de empleo.",
@@ -221,6 +237,21 @@ const ProfesionalService = () => {
       ],
     },
   ]);
+
+  const [formValues, setFormValues] = useState({
+    nombre: "",
+    apellido: "",
+    correoElectronico: "",
+    numeroWhatsApp: "",
+    perfilLinkedin: "",
+    ubicacion: "",
+    areaCargo: "",
+    modalidad: "",
+    adjuntarCV: "",
+    publicarYDifundirMiCV: "",
+    evaluarYRecomendarMiPerfilProfesionalAEmpresas: "",
+    preferenciasObservaciones: "",
+    });
 
   function renderForm() {
     const service = services.find(
@@ -274,11 +305,14 @@ const ProfesionalService = () => {
                   number={service.number}
                   character={service.text}
                   service={service}
+                  services={services}
+                  checkState={checkState}
+                  setCheckState={setCheckState}	
                   renderForm={setActiveButton}
                   descriptionResume={service.descriptionResume}
                   descriptionComplete={service.descriptionComplete}
                   includes={service.includes}
-                  serviceCheck={service.check}
+                  handleSolicitService={handleSolicitService}
                 />
               )}
             </Reorder.Item>
