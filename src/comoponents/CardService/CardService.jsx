@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import style from "./CardService.module.css";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { useServices } from "../../context/ServiceContext";
+import emailjs from "@emailjs/browser";
 
 export default function CardService({
   character,
@@ -18,7 +19,7 @@ export default function CardService({
   const [showMore, setShowMore] = useState(isOpen || false);
   const [isChecked, setIsChecked] = useState(false);
   const { toggleService, selectedService, setSelectedService } = useServices();
-  const [serviceSelected, setServiceSelected] = useState(service.check);
+
 
   const toggleDescription = () => {
     setShowMore(!showMore);
@@ -32,17 +33,18 @@ export default function CardService({
     }
     setIsChecked(!isChecked);
     service.check = !service.check;
-  };
-
-  const handleChecked = () => {
-    setIsChecked(false);
+    setFormData({
+      ...formData,
+      checkboxChecked: !isChecked,
+    });
   };
 
   const handleSolicitar = () => {
-    renderForm(true);
+    renderForm(true); 
     setIsChecked(!isChecked);
     service.check = true;
   };
+  
   return (
     <div className={style.contentAll} data-isopen={isOpen}>
       <div className={style.contentPrimary}>
@@ -52,7 +54,7 @@ export default function CardService({
           onChange={() => {
             handleCheckboxChange(number);
           }}
-        />{" "}
+        />
         <h6 className={style.title}>{character}</h6>
         <IoIosArrowDown
           size="25"
@@ -93,6 +95,8 @@ export default function CardService({
           Solicitar
         </button>
       </div>
+
+
     </div>
   );
 }

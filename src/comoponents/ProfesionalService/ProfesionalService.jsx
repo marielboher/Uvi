@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import CardService from "../CardService/CardService";
 import { useServices } from "../../context/ServiceContext";
 import style from "./profesionalService.module.css";
 import { Reorder } from "framer-motion";
 import CardCompany from "../CardCompany/CardCompany";
+import emailjs from "@emailjs/browser";
+import { uploadFile } from "../../firebase/config";
+
 
 const ProfesionalService = () => {
   const {
@@ -14,19 +17,15 @@ const ProfesionalService = () => {
     setSelectedService,
   } = useServices();
 
-  // Resto del código
-
   const handleSolicitService = (serviceNumber) => {
     if (selectedService === serviceNumber) {
-      // Si el mismo servicio está seleccionado, deseleccionarlo
       setSelectedService(null);
     } else {
-      // Si se selecciona otro servicio, cambiar el estado
       setSelectedService(serviceNumber);
     }
   };
-const [checkState , setCheckState] = useState(false)
-  // Resto del código
+  const [checkState, setCheckState] = useState(false);
+
   const [services, setServices] = useState([
     {
       number: 1,
@@ -43,20 +42,6 @@ const [checkState , setCheckState] = useState(false)
         "Instructivo de cómo realizar las modificaciones ",
         "Publicación y difusión de CV en LinkedIn (opcional) ",
       ],
-      fields: [
-        "Nombre",
-        "Apellido",
-        "Correo electrónico",
-        "Número de WhatsApp",
-        "Perfil de Linkedin",
-        "Ubicación",
-        "Área/Cargo",
-        "Modalidad",
-        "Adjuntar CV",
-        "Publicar y difundir mi CV (Opcional)",
-        "Evaluar y recomendar mi perfil profesional a empresas (Opcional)",
-        "Preferencias/Observaciones",
-      ],
     },
     {
       number: 2,
@@ -71,20 +56,6 @@ const [checkState , setCheckState] = useState(false)
         "Revisión de perfil existente de LinkedIn ",
         "IInforme con recomendaciones y sugerencias para realizar modificaciones en la presentación, resumen, experiencias, habilidades y secciones adicionales. ",
         "Instructivo de cómo realizar las modificaciones ",
-      ],
-      fields: [
-        "Nombre",
-        "Apellido",
-        "Correo electrónico",
-        "Número de WhatsApp",
-        "Perfil de Linkedin",
-        "Ubicación",
-        "Área/Cargo",
-        "Modalidad",
-        "Adjuntar CV",
-        "Publicar y difundir mi CV (Opcional)",
-        "Evaluar y recomendar mi perfil profesional a empresas (Opcional)",
-        "Preferencias/Observaciones",
       ],
     },
     {
@@ -103,20 +74,6 @@ const [checkState , setCheckState] = useState(false)
         "Instructivo de cómorealizar las modificaciones ",
         "Publicación y difusión de CV en LinkedIn (opcional) ",
       ],
-      fields: [
-        "Nombre",
-        "Apellido",
-        "Correo electrónico",
-        "Número de WhatsApp",
-        "Perfil de Linkedin",
-        "Ubicación",
-        "Área/Cargo",
-        "Modalidad",
-        "Adjuntar CV",
-        "Publicar y difundir mi CV (Opcional)",
-        "Evaluar y recomendar mi perfil profesional a empresas (Opcional)",
-        "Preferencias/Observaciones",
-      ],
     },
     {
       number: 4,
@@ -132,20 +89,6 @@ const [checkState , setCheckState] = useState(false)
         "Creación de un nuevo perfil de LinkedIn u optimización total del existente ",
         "Información en formato digital para la importación directa de los datos de la nueva cuenta ",
         "Instructivo de cómo realizar futuras modificaciones ",
-      ],
-      fields: [
-        "Nombre",
-        "Apellido",
-        "Correo electrónico",
-        "Número de WhatsApp",
-        "Perfil de Linkedin",
-        "Ubicación",
-        "Área/Cargo",
-        "Modalidad",
-        "Adjuntar CV",
-        "Publicar y difundir mi CV (Opcional)",
-        "Evaluar y recomendar mi perfil profesional a empresas (Opcional)",
-        "Preferencias/Observaciones",
       ],
     },
     {
@@ -163,20 +106,6 @@ const [checkState , setCheckState] = useState(false)
         "Entrega del documento en formato PDF y enlace de edición para futuras modificaciones",
         "Instructivo de cómo realizar modificaciones",
       ],
-      fields: [
-        "Nombre",
-        "Apellido",
-        "Correo electrónico",
-        "Número de WhatsApp",
-        "Perfil de Linkedin",
-        "Ubicación",
-        "Área/Cargo",
-        "Modalidad",
-        "Adjuntar CV",
-        "Publicar y difundir mi CV (Opcional)",
-        "Evaluar y recomendar mi perfil profesional a empresas (Opcional)",
-        "Preferencias/Observaciones",
-      ],
     },
     {
       number: 6,
@@ -192,20 +121,6 @@ const [checkState , setCheckState] = useState(false)
         "Simulacros de entrevistas",
         "Sugerencias y recomendaciones adaptables a distintos tipos de entrevista",
         " Evaluación del perfil profesional y recomendación a empresas (Opcional)",
-      ],
-      fields: [
-        "Nombre",
-        "Apellido",
-        "Correo electrónico",
-        "Número de WhatsApp",
-        "Perfil de Linkedin",
-        "Ubicación",
-        "Área/Cargo",
-        "Modalidad",
-        "Adjuntar CV",
-        "Publicar y difundir mi CV (Opcional)",
-        "Evaluar y recomendar mi perfil profesional a empresas (Opcional)",
-        "Preferencias/Observaciones",
       ],
     },
     {
@@ -238,38 +153,94 @@ const [checkState , setCheckState] = useState(false)
     },
   ]);
 
-  const [formValues, setFormValues] = useState({
-    nombre: "",
-    apellido: "",
-    correoElectronico: "",
-    numeroWhatsApp: "",
-    perfilLinkedin: "",
-    ubicacion: "",
-    areaCargo: "",
-    modalidad: "",
-    adjuntarCV: "",
-    publicarYDifundirMiCV: "",
-    evaluarYRecomendarMiPerfilProfesionalAEmpresas: "",
-    preferenciasObservaciones: "",
-    });
+  const [file, setFile] = useState(null);
 
+  const form = useRef();
+
+  const sendEmail = async (e) => {
+    e.preventDefault();
+
+    // Sube el archivo y obtén la URL de Firebase
+    let fileURL = await uploadFile(file);
+
+    // Crea un objeto con los datos del formulario
+    const formData = {
+      user_name: form.current.user_name.value,
+      user_lastname: form.current.user_lastname.value,
+      user_email: form.current.user_email.value,
+      user_number: form.current.user_number.value,
+      user_location: form.current.user_location.value,
+      user_area: form.current.user_area.value,
+      user_modalidad: form.current.user_modalidad.value,
+      user_publicar: form.current.user_publicar.checked,
+      user_recomendar: form.current.user_recomendar.checked,
+      user_preferencias: form.current.user_preferencias.value,
+      user_cv: fileURL,  // Aquí pasas la URL del archivo en lugar del archivo en sí
+    };
+
+    // Envía el correo electrónico
+    emailjs.send('service_o7hg6g4', 'template_f3pesq8', formData, 'RAngztwFezGpFS4n1')
+      .then((result) => {
+        console.log(result.text);
+      }, (error) => {
+        console.log(error.text);
+      });
+  };
   function renderForm() {
-    const service = services.find(
-      (service) => service.number === selectedService
-    );
-    if (!service) return null;
-
-    const commonFields = service.fields;
-
     return (
-      <div className={style.formContainer}>
-        {commonFields.map((field) => (
-          <div className={style.formServices} key={field}>
-            <label>{field}:</label>
-            <input type="text" />
+      <form onSubmit={sendEmail} ref={form}>
+        <div className={style.formContainer}>
+          <div className={style.formServices}>
+            <label>Nombre</label>
+            <input type="text" name="user_name" />
           </div>
-        ))}
-      </div>
+          <div className={style.formServices}>
+            <label>Apellido</label>
+            <input type="text" name="user_lastname"/>
+          </div>
+          <div className={style.formServices}>
+            <label>Correo electrónico</label>
+            <input type="text" name="user_email" />
+          </div>
+          <div className={style.formServices}>
+            <label>Número de WhatsApp</label>
+            <input type="text" name="user_number" />
+          </div>
+          <div className={style.formServices}>
+            <label>Ubicación</label>
+            <input type="text" name="user_location" />
+          </div>
+          <div className={style.formServices}>
+            <label>Área/Cargo</label>
+            <input type="text" name="user_area" />
+          </div>
+          <div className={style.formServices}>
+            <label>Modalidad</label>
+            <input type="text" name="user_modalidad" />
+          </div>
+          <div className={style.formServices}>
+            <label>Adjuntar CV</label>
+            <input input type="file" name="user_cv" onChange={e => setFile(e.target.files[0])} />
+          </div>
+          <div className={style.formServices}>
+            <label>"Publicar y difundir mi CV (Opcional)</label>
+            <input type="checkbox" name="user_publicar" />
+          </div>
+          <div className={style.formServices}>
+            <label>
+              Evaluar y recomendar mi perfil profesional a empresas (Opcional)
+            </label>
+            <input type="checkbox" name="user_recomendar" />
+          </div>
+          <div className={style.formServices}>
+            <label>Preferencias/Observaciones</label>
+            <input type="text" name="user_preferencias" />
+          </div>
+        </div>
+        <button type="submit" className={style.buttonForm}>
+          Enviar
+        </button>
+      </form>
     );
   }
 
@@ -307,7 +278,7 @@ const [checkState , setCheckState] = useState(false)
                   service={service}
                   services={services}
                   checkState={checkState}
-                  setCheckState={setCheckState}	
+                  setCheckState={setCheckState}
                   renderForm={setActiveButton}
                   descriptionResume={service.descriptionResume}
                   descriptionComplete={service.descriptionComplete}
