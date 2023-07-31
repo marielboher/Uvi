@@ -11,6 +11,7 @@ export const ServiceContext = ({ children }) => {
   const [activeButton, setActiveButton] = useState(false);
   const [isProfessional, setIsProfessional] = useState(true);
   const [selectedService, setSelectedService] = useState([]);
+  const [selectedServices, setSelectedServices] = useState([]);
 
   const handleProfessionalClick = () => {
     setIsProfessional(true);
@@ -39,7 +40,9 @@ export const ServiceContext = ({ children }) => {
         toggleService,
         handleCompanyClick,
         handleProfessionalClick,
-        isProfessional
+        isProfessional,
+        selectedServices,
+        setSelectedServices,
       }}
     >
       {children}

@@ -18,8 +18,8 @@ export default function CardService({
 }) {
   const [showMore, setShowMore] = useState(isOpen || false);
   const [isChecked, setIsChecked] = useState(false);
-  const { toggleService, selectedService, setSelectedService } = useServices();
-
+  const { toggleService, selectedServices, setSelectedServices } =
+    useServices();
 
   const toggleDescription = () => {
     setShowMore(!showMore);
@@ -33,18 +33,26 @@ export default function CardService({
     }
     setIsChecked(!isChecked);
     service.check = !service.check;
-    setFormData({
-      ...formData,
-      checkboxChecked: !isChecked,
-    });
+    // setFormData({
+    //   ...formData,
+    //   checkboxChecked: !isChecked,
+    // });
+
+    if (isChecked) {
+      setSelectedServices((prevServices) =>
+        prevServices.filter((service) => service !== character)
+      );
+    } else {
+      setSelectedServices((prevServices) => [...prevServices, character]);
+    }
   };
 
   const handleSolicitar = () => {
-    renderForm(true); 
+    renderForm(true);
     setIsChecked(!isChecked);
     service.check = true;
   };
-  
+
   return (
     <div className={style.contentAll} data-isopen={isOpen}>
       <div className={style.contentPrimary}>
@@ -95,8 +103,6 @@ export default function CardService({
           Solicitar
         </button>
       </div>
-
-
     </div>
   );
 }

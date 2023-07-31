@@ -7,7 +7,6 @@ import CardCompany from "../CardCompany/CardCompany";
 import emailjs from "@emailjs/browser";
 import { uploadFile } from "../../firebase/config";
 
-
 const ProfesionalService = () => {
   const {
     activeButton,
@@ -15,10 +14,12 @@ const ProfesionalService = () => {
     isProfessional,
     selectedService,
     setSelectedService,
+    selectedServices,
+    setSelectedServices,
   } = useServices();
 
   const handleSolicitService = (serviceNumber) => {
-    if (selectedService === serviceNumber) {
+    if (selectedServices === serviceNumber) {
       setSelectedService(null);
     } else {
       setSelectedService(serviceNumber);
@@ -160,10 +161,8 @@ const ProfesionalService = () => {
   const sendEmail = async (e) => {
     e.preventDefault();
 
-    // Sube el archivo y obtén la URL de Firebase
     let fileURL = await uploadFile(file);
 
-    // Crea un objeto con los datos del formulario
     const formData = {
       user_name: form.current.user_name.value,
       user_lastname: form.current.user_lastname.value,
@@ -175,16 +174,26 @@ const ProfesionalService = () => {
       user_publicar: form.current.user_publicar.checked,
       user_recomendar: form.current.user_recomendar.checked,
       user_preferencias: form.current.user_preferencias.value,
-      user_cv: fileURL,  // Aquí pasas la URL del archivo en lugar del archivo en sí
+      user_cv: fileURL,
+      selected_services: Array.from(new Set(selectedServices)).join(", "),
     };
 
     // Envía el correo electrónico
-    emailjs.send('service_o7hg6g4', 'template_f3pesq8', formData, 'RAngztwFezGpFS4n1')
-      .then((result) => {
-        console.log(result.text);
-      }, (error) => {
-        console.log(error.text);
-      });
+    emailjs
+      .send(
+        "service_o7hg6g4",
+        "template_f3pesq8",
+        formData,
+        "RAngztwFezGpFS4n1"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
   };
   function renderForm() {
     return (
@@ -196,7 +205,7 @@ const ProfesionalService = () => {
           </div>
           <div className={style.formServices}>
             <label>Apellido</label>
-            <input type="text" name="user_lastname"/>
+            <input type="text" name="user_lastname" />
           </div>
           <div className={style.formServices}>
             <label>Correo electrónico</label>
@@ -220,10 +229,15 @@ const ProfesionalService = () => {
           </div>
           <div className={style.formServices}>
             <label>Adjuntar CV</label>
-            <input input type="file" name="user_cv" onChange={e => setFile(e.target.files[0])} />
+            <input
+              input
+              type="file"
+              name="user_cv"
+              onChange={(e) => setFile(e.target.files[0])}
+            />
           </div>
           <div className={style.formServices}>
-            <label>"Publicar y difundir mi CV (Opcional)</label>
+            <label>Publicar y difundir mi CV (Opcional)</label>
             <input type="checkbox" name="user_publicar" />
           </div>
           <div className={style.formServices}>
