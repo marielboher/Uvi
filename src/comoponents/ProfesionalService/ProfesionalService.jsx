@@ -233,27 +233,28 @@ const ProfesionalService = () => {
               input
               type="file"
               name="user_cv"
+              className={style.fileInput}
               onChange={(e) => setFile(e.target.files[0])}
             />
           </div>
-          <div className={style.formServices}>
+          <div className={style.inputCheckbox}>
             <label>Publicar y difundir mi CV (Opcional)</label>
             <input type="checkbox" name="user_publicar" />
           </div>
-          <div className={style.formServices}>
+          <div className={style.inputCheckbox}>
             <label>
               Evaluar y recomendar mi perfil profesional a empresas (Opcional)
             </label>
-            <input type="checkbox" name="user_recomendar" />
+            <input type="checkbox" name="user_recomendar"/>
           </div>
           <div className={style.formServices}>
             <label>Preferencias/Observaciones</label>
             <input type="text" name="user_preferencias" />
           </div>
         </div>
-        <button type="submit" className={style.buttonForm}>
-          Enviar
-        </button>
+        <div className={style.containerBtn}>
+        <button type="submit" className={style.buttonDonate}>Donar</button>
+      </div>
       </form>
     );
   }
@@ -306,9 +307,7 @@ const ProfesionalService = () => {
         {!isProfessional && <CardCompany />}
         {activeButton && isProfessional && renderForm()}
       </Reorder.Group>
-      <div className={style.containerBtn}>
-        <button className={style.buttonDonate}>Donar</button>
-      </div>
+      
     </div>
   );
 };
