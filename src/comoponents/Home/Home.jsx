@@ -36,143 +36,143 @@ export default function Home() {
     <div className={style.contentAll} id="home">
       <img src={background} alt="" className={style.background} />
 
-      {innerWidth > 700 ? (
-        <div className={style.contentSlider}>
-          <motion.div
-            className={style.contentImages}
-            initial={{ x: "100%" }}
-            animate={{ x: [null, "0%", "0%", "0%", "100%"] }}
-            transition={{
-              delay: 2,
-              duration: 5,
-              repeatType: "reverse",
-              repeat: Infinity,
-              repeatDelay: 12,
-            }}
-          >
-            <img src={cardCV} alt="" />
-          </motion.div>
-          <motion.div
-            className={style.contentImages}
-            initial={{ x: "100%" }}
-            animate={{ x: [null, "0%", "0%", "0%", "100%"] }}
-            transition={{
-              delay: 7,
-              duration: 5,
-              repeatType: "reverse",
-              repeat: Infinity,
-              repeatDelay: 12,
-            }}
-          >
-            <img src={cardLinkedin} alt="" />
-          </motion.div>
-          <motion.div
-            className={style.contentImages}
-            initial={{ x: "100%" }}
-            animate={{ x: [null, "0%", "0%", "0%", "100%"] }}
-            transition={{
-              delay: 12,
-              duration: 5,
-              repeatType: "reverse",
-              repeat: Infinity,
-              repeatDelay: 12,
-            }}
-          >
-            <img src={cardInterview} alt="" />
-          </motion.div>
-        </div>
-      ) : (
-        <div className={style.contentSlider}>
-          <motion.div
-            className={style.contentImages}
-            initial={{ x: "100%" }}
-            animate={{ x: [null, "0%", "0%", "0%", "100%"] }}
-            transition={{
-              delay: 2,
-              duration: 5,
-              repeatType: "reverse",
-              repeat: Infinity,
-              repeatDelay: 12,
-            }}
-          >
-            <img src={cardCVMovile} alt="" />
-          </motion.div>
-          <motion.div
-            className={style.contentImages}
-            initial={{ x: "100%" }}
-            animate={{ x: [null, "0%", "0%", "0%", "100%"] }}
-            transition={{
-              delay: 7,
-              duration: 5,
-              repeatType: "reverse",
-              repeat: Infinity,
-              repeatDelay: 12,
-            }}
-          >
-            <img src={cardLinkedinMovile} alt="" />
-          </motion.div>
-          <motion.div
-            className={style.contentImages}
-            initial={{ x: "100%" }}
-            animate={{ x: [null, "0%", "0%", "0%", "100%"] }}
-            transition={{
-              delay: 12,
-              duration: 5,
-              repeatType: "reverse",
-              repeat: Infinity,
-              repeatDelay: 12,
-            }}
-          >
-            <img src={cardInterviewMovile} alt="" />
-          </motion.div>
-        </div>
-      )}
-
-      <div className={style.backgroundVideo}>
-        <video autoPlay muted loop>
-          <source src={backgroundVideo} type="video/mp4" />
-        </video>
-      </div>
-
-      <div className={style.contentInfo}>
-        <h6>
-          Potencia tu búsqueda laboral mediante una donación con nuestros
-          servicios de asesorías personalizadas para profesionales o suscribite
-          sin costo a nuestro servicio de recomendación de perfiles destacados
-          para empresas.
-        </h6>
-        <div className={style.contentButtons}>
-          <Link to="services">
-            <button
-              onClick={() => {
-                handleProfessionalClick();
-                setActiveButton(false);
+        {innerWidth > 700 ? (
+          <div className={style.contentSlider}>
+            <motion.div
+              className={style.contentImages}
+              initial={{ x: "100%" }}
+              animate={{ x: [null, "0%", "0%", "0%", "100%"] }}
+              transition={{
+                delay: 2,
+                duration: 5,
+                repeatType: "reverse",
+                repeat: Infinity,
+                repeatDelay: 12,
               }}
-              spy={true}
-              smooth="true"
-              offset={-20}
-              duration={500}
-              className={style.buttonServices}
-              activeclass="active"
             >
-              Profesional
-            </button>
-          </Link>
-          <Link to="services">
-            <button
-              onClick={handleCompanyClick}
-              activeclass="services"
-              spy={true}
-              smooth="true"
-              offset={20}
-              duration={500}
-              className={style.buttonAbout}
+              <img src={cardCV} alt="" />
+            </motion.div>
+            <motion.div
+              className={style.contentImages}
+              initial={{ x: "100%" }}
+              animate={{ x: [null, "0%", "0%", "0%", "100%"] }}
+              transition={{
+                delay: 7,
+                duration: 5,
+                repeatType: "reverse",
+                repeat: Infinity,
+                repeatDelay: 12,
+              }}
             >
-              Empresa
-            </button>
-          </Link>
+              <img src={cardLinkedin} alt="" />
+            </motion.div>
+            <motion.div
+              className={style.contentImages}
+              initial={{ x: "100%" }}
+              animate={{ x: [null, "0%", "0%", "0%", "100%"] }}
+              transition={{
+                delay: 12,
+                duration: 5,
+                repeatType: "reverse",
+                repeat: Infinity,
+                repeatDelay: 12,
+              }}
+            >
+              <img src={cardInterview} alt="" />
+            </motion.div>
+          </div>
+        ) : (
+          <div className={style.contentSlider}>
+            <motion.div
+              className={style.contentImages}
+              initial={{ x: "100%" }}
+              animate={{ x: [null, "0%", "0%", "0%", "100%"] }}
+              transition={{
+                delay: 2,
+                duration: 5,
+                repeatType: "reverse",
+                repeat: Infinity,
+                repeatDelay: 12,
+              }}
+            >
+              <img src={cardCVMovile} alt="" />
+            </motion.div>
+            <motion.div
+              className={style.contentImages}
+              initial={{ x: "100%" }}
+              animate={{ x: [null, "0%", "0%", "0%", "100%"] }}
+              transition={{
+                delay: 7,
+                duration: 5,
+                repeatType: "reverse",
+                repeat: Infinity,
+                repeatDelay: 12,
+              }}
+            >
+              <img src={cardLinkedinMovile} alt="" />
+            </motion.div>
+            <motion.div
+              className={style.contentImages}
+              initial={{ x: "100%" }}
+              animate={{ x: [null, "0%", "0%", "0%", "100%"] }}
+              transition={{
+                delay: 12,
+                duration: 5,
+                repeatType: "reverse",
+                repeat: Infinity,
+                repeatDelay: 12,
+              }}
+            >
+              <img src={cardInterviewMovile} alt="" />
+            </motion.div>
+          </div>
+        )}
+  
+        <div className={style.backgroundVideo}>
+          <video autoPlay muted loop>
+            <source src={backgroundVideo} type="video/mp4" />
+          </video>
         </div>
-      </div>
+  
+        <div className={style.contentInfo}>
+          <h6>
+            Potencia tu búsqueda laboral mediante una donación con nuestros
+            servicios de asesorías personalizadas para profesionales o suscribite
+            sin costo a nuestro servicio de recomendación de perfiles destacados
+            para empresas.
+          </h6>
+          <div className={style.contentButtons}>
+            <Link to="services">
+              <button
+                onClick={() => {
+                  handleProfessionalClick();
+                  setActiveButton(false);
+                }}
+                spy={true}
+                smooth="true"
+                offset={-20}
+                duration={500}
+                className={style.buttonServices}
+                activeclass="active"
+              >
+                Profesional
+              </button>
+            </Link>
+            <Link to="services">
+              <button
+                onClick={handleCompanyClick}
+                activeclass="services"
+                spy={true}
+                smooth="true"
+                offset={20}
+                duration={500}
+                className={style.buttonAbout}
+              >
+                Empresa
+              </button>
+            </Link>
+          </div>
+        </div>
     </div>
   );
 }
