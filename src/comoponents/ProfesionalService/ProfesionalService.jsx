@@ -15,7 +15,6 @@ const ProfesionalService = () => {
     selectedService,
     setSelectedService,
     selectedServices,
-    setSelectedServices,
   } = useServices();
 
   const handleSolicitService = (serviceNumber) => {
@@ -137,20 +136,6 @@ const ProfesionalService = () => {
         "Descarga sin costo",
         "Acceso sin costo a actualizaciones",
       ],
-      fields: [
-        "Nombre",
-        "Apellido",
-        "Correo electrónico",
-        "Número de WhatsApp",
-        "Perfil de Linkedin",
-        "Ubicación",
-        "Área/Cargo",
-        "Modalidad",
-        "Adjuntar CV",
-        "Publicar y difundir mi CV (Opcional)",
-        "Evaluar y recomendar mi perfil profesional a empresas (Opcional)",
-        "Preferencias/Observaciones",
-      ],
     },
   ]);
 
@@ -189,6 +174,7 @@ const ProfesionalService = () => {
       .then(
         (result) => {
           console.log(result.text);
+          console.log(selectedServices);
         },
         (error) => {
           console.log(error.text);
@@ -216,24 +202,32 @@ const ProfesionalService = () => {
             <input type="text" name="user_number" />
           </div>
           <div className={style.formServices}>
-            <label>Ubicación</label>
-            <input type="text" name="user_location" />
+            <label>Perfil de Linkedin</label>
+            <input type="text" name="linkedin" />
           </div>
           <div className={style.formServices}>
-            <label>Área/Cargo</label>
+            <label>Ubicación</label>
+            <select name="user_location">
+              <option value="">Seleccione una opción</option>
+              <option value="Presencial">Presencial</option>
+              <option value="Híbrido">Híbrido</option>
+              <option value="Remoto">Remoto</option>
+            </select>
+          </div>
+          <div className={style.formServices}>
+            <label>Área(s)/Cargo(s)</label>
             <input type="text" name="user_area" />
           </div>
           <div className={style.formServices}>
             <label>Modalidad</label>
             <input type="text" name="user_modalidad" />
           </div>
-          <div className={style.formServices}>
+          <div className={style.fileInput}>
             <label>Adjuntar CV</label>
             <input
               input
               type="file"
               name="user_cv"
-              className={style.fileInput}
               onChange={(e) => setFile(e.target.files[0])}
             />
           </div>
@@ -245,16 +239,18 @@ const ProfesionalService = () => {
             <label>
               Evaluar y recomendar mi perfil profesional a empresas (Opcional)
             </label>
-            <input type="checkbox" name="user_recomendar"/>
+            <input type="checkbox" name="user_recomendar" />
           </div>
           <div className={style.formServices}>
             <label>Preferencias/Observaciones</label>
-            <input type="text" name="user_preferencias" />
+            <textarea type="text" name="user_preferencias" />
           </div>
         </div>
         <div className={style.containerBtn}>
-        <button type="submit" className={style.buttonDonate}>Donar</button>
-      </div>
+          <button type="submit" className={style.buttonDonate}>
+            Donar
+          </button>
+        </div>
       </form>
     );
   }
@@ -269,7 +265,7 @@ const ProfesionalService = () => {
           a tus necesidades actuales.
         </p>
       </div>
-      <Reorder.Group
+      <div
         axis="y"
         values={services.map((service) => service.number)}
         onReorder={(values) =>
@@ -284,7 +280,7 @@ const ProfesionalService = () => {
       >
         {services.map((service) => {
           return (
-            <Reorder.Item key={service.number} value={service.number}>
+            <div key={service.number} value={service.number}>
               {isProfessional && (
                 <CardService
                   isOpen={selectedService === service.number}
@@ -301,13 +297,15 @@ const ProfesionalService = () => {
                   handleSolicitService={handleSolicitService}
                 />
               )}
-            </Reorder.Item>
+            </div>
           );
         })}
         {!isProfessional && <CardCompany />}
-        {activeButton && isProfessional && renderForm()}
-      </Reorder.Group>
-      
+        {activeButton &&
+          isProfessional &&
+          selectedServices.length > 0 &&
+          renderForm()}
+      </div>
     </div>
   );
 };
