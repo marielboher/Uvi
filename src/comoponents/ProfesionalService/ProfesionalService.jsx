@@ -166,15 +166,17 @@ const ProfesionalService = () => {
     // Envía el correo electrónico
     emailjs
       .send(
-        "service_o7hg6g4",
-        "template_f3pesq8",
+        "service_qhtsfhf",
+        "template_rsxfvkg",
         formData,
-        "RAngztwFezGpFS4n1"
+        "Jlu3F4LlHbFLRqjnS"
       )
       .then(
         (result) => {
           console.log(result.text);
           console.log(selectedServices);
+          form.current.reset();
+          setFile(null);
         },
         (error) => {
           console.log(error.text);
@@ -206,7 +208,7 @@ const ProfesionalService = () => {
             <input type="text" name="linkedin" />
           </div>
           <div className={style.formServices}>
-            <label>Ubicación</label>
+            <label>Modalidad</label>
             <select name="user_location">
               <option value="">Seleccione una opción</option>
               <option value="Presencial">Presencial</option>
@@ -219,7 +221,7 @@ const ProfesionalService = () => {
             <input type="text" name="user_area" />
           </div>
           <div className={style.formServices}>
-            <label>Modalidad</label>
+            <label>Ubicacion</label>
             <input type="text" name="user_modalidad" />
           </div>
           <div className={style.fileInput}>
@@ -247,6 +249,10 @@ const ProfesionalService = () => {
           </div>
         </div>
         <div className={style.containerBtn}>
+          <p>
+            Siéntete libre de ajustar la donación por debajo o por arriba de la
+            sugerencia según tu capacidad.
+          </p>
           <button type="submit" className={style.buttonDonate}>
             Donar
           </button>
@@ -262,7 +268,7 @@ const ProfesionalService = () => {
           Contamos con diferentes servicios diseñados para ayudarte a mejorar
           tus oportunidades y posibilidades de conseguir el empleo que estás
           buscando. Te invitamos a que los descubras y elijas los que se ajusten
-          a tus necesidades actuales.
+          a tus necesidades actuales. panel
         </p>
       </div>
       <div

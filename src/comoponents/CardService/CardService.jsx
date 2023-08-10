@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import style from "./CardService.module.css";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { useServices } from "../../context/ServiceContext";
@@ -15,13 +15,25 @@ export default function CardService({
   services,
   setCheckState,
 }) {
+  const isGuideService = character === "Guía de prompts de Chat GPT";
+
   const [showMore, setShowMore] = useState(isOpen || false);
   const [isChecked, setIsChecked] = useState(false);
-  const { toggleService, selectedServices, setSelectedServices } = useServices();
+  const [defaultOpen, setDefaultOpen] = useState(isGuideService); // Nuevo estado
+  const { toggleService, selectedServices, setSelectedServices } =
+    useServices();
 
-  const toggleDescription = () => {
-    setShowMore(!showMore);
-  };
+    useEffect(() => {
+      if (defaultOpen) {
+        toggleService(number);
+        setDefaultOpen(false);
+      }
+    }, [selectedServices])
+  
+    const toggleDescription = () => {
+      setShowMore(!showMore);
+    };
+
   const handleCheckboxChange = (itemID) => {
     if (itemID == 1) {
       services[2].check = false;
@@ -41,7 +53,7 @@ export default function CardService({
   };
 
   const handleSolicitar = () => {
-    handleCheckboxChange(number)
+    handleCheckboxChange(number);
     setIsChecked(!isChecked);
     service.check = true;
   };
@@ -49,13 +61,15 @@ export default function CardService({
   return (
     <div className={style.contentAll} data-isopen={isOpen}>
       <div className={style.contentPrimary}>
-        <input
-          type="checkbox"
-          checked={isChecked}
-          onChange={() => {
-            handleCheckboxChange(number);
-          }}
-        />
+        {!isGuideService && (
+          <input
+            type="checkbox"
+            checked={isChecked}
+            onChange={() => {
+              handleCheckboxChange(number);
+            }}
+          />
+        )}
         <h6 className={style.title}>{character}</h6>
         <IoIosArrowDown
           size="25"
@@ -88,13 +102,17 @@ export default function CardService({
             </div>
           )}
         </div>
-        <button
-          onClick={handleSolicitar}
-          className={style.buttonSolicited}
-          data-isopen={isOpen}
-        >
-          Solicitar
-        </button>
+        {isGuideService ? (
+          <button className={style.downloadButton}>Descargar</button>
+        ) : (
+          <button
+            onClick={handleSolicitar}
+            className={style.buttonSolicited}
+            data-isopen={isOpen}
+          >
+            Solicitar
+          </button>
+        )}
       </div>
     </div>
   );

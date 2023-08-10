@@ -18,7 +18,7 @@ export default function Footer() {
           </a>
           <p>
             {/* <TiMail size="40" className={style.logos} /> */}
-            info@uvi.com.ar
+            contacto@uvi.com.ar
           </p>
           <a href="mailto:info@uvi.com.ar" target="_blank">
             <TiMail size="40" className={style.logos} />

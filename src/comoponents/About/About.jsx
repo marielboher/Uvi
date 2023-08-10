@@ -17,45 +17,8 @@ export default function About() {
     slidesToScroll: 1,
     arrow: true,
     autoplay: true,
-    // nextArrow: <SampleNextArrow />,
-    // prevArrow: <SamplePrevArrow />,
   };
-  // function SampleNextArrow(props) {
-  //   const { className, style, onClick } = props;
-  //   return (
-  //     <div
-  //       className={className}
-  //       style={{
-  //         ...style,
-  //         display: "block",
-  //         background: "grey",
-  //         display:'grid',
-  //         gridArea: "center",
-  //         height: "100%",
-  //         fillOpacity: 1,
-  //         fillRule: "evenodd",
-  //         fill: "black",
-  //       }}
-  //       onClick={onClick}
-  //     />
-  //   );
-  // }
 
-  // function SamplePrevArrow(props) {
-  //   const { className, style, onClick } = props;
-  //   return (
-  //     <div
-  //       className={className}
-  //       style={{
-  //         ...style,
-  //         display: "block",
-  //         color: "blue", // Cambia el color a tu preferencia
-  //         background: "yellow", // Cambia el color de fondo a tu preferencia
-  //       }}
-  //       onClick={onClick}
-  //     />
-  //   );
-  // }
   const teamReviews = [
     {
       nombre: "nombre",
@@ -119,16 +82,7 @@ export default function About() {
         <div className={style.barra}></div>
         <h3>Nosotros</h3>
         <p className={style.description}>
-          En nuestra plataforma de asesorías laborales, nos dedicamos a ofrecer
-          servicios especializados para ayudarte a potenciar tu éxito
-          profesional. Nuestro enfoque se centra en tres áreas clave: la mejora
-          de tu currículum vitae (CV), la optimización de tu perfil de LinkedIn
-          y la preparación para entrevistas laborales. Contamos con un equipo de
-          expertos en recursos humanos dispuestos a brindarte asesoramiento
-          personalizado y estratégico, diseñado para resaltar tus fortalezas y
-          diferenciarte en el competitivo mercado laboral actual. Confía en
-          nosotros para alcanzar tus objetivos profesionales y dar el siguiente
-          paso en tu carrera.
+        Somos una plataforma enfocada en el asesoramiento laboral para mejorar las oportunidades laborales de profesionales en búsqueda de empleo. Contamos con un equipo de especialistas en recursos humanos con una gran vocación y compromiso por el logro de resultados que trabajan en conjunto con los profesionales para optimizar su currículum vitae, perfil de LinkedIn y el entrenamiento para entrevistas laborales para estar mejor preparados para las oportunidades que se presenten.
         </p>
         <h2 className={style.subTitle}>Nuestra Mision</h2>
         <p className={style.description}>

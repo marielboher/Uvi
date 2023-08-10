@@ -3,12 +3,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    /* margin-block: 0; */
     padding-inline-start: 0;
     margin-top: 2rem;
     gap: 0.5rem;
     height: 360px auto;
-
+    margin-bottom: 1.5rem;
 }
 
 .cardServices {
@@ -51,7 +50,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     width: 100%;
+}
+.containerBtn p{
+    text-align: center;
+    padding: 20px;
 }
 
 .formContainer {
@@ -78,6 +82,7 @@
     background-color: transparent;
     border: 1px solid #ccc;
     border-radius: 15px;
+    width: 283px;
     height: 50px;
     font-size: 1rem;
     margin-bottom: 1rem;
@@ -98,11 +103,7 @@
 }
 
 .fileInput {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     margin-bottom: 1rem;
-    margin: 20px 15px 20px 7px;
 }
 
 .fileInput label {
@@ -171,8 +172,19 @@
     width: 80%;
 }
 
+.guiaPromts{
+    background-color: #fff;
+    width: 550px;
+    overflow: hidden;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
 
-@media (max-width: 450px) {
+@media (max-width: 480px) {
     .cardServices {
         display: flex;
         flex-direction: column;
@@ -187,5 +199,14 @@
 
     .subtitleCard {
         margin-top: 5%;
+    }
+    .formContainer {
+        width: 350px;
+        border-radius: 10px;
+        height: 100%;
+        padding: 20px;
+        margin-top: 30px;
+        background-color: transparent;
+        margin-left: 22px;
     }
 }

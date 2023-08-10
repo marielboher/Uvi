@@ -17,7 +17,6 @@ export default function Services() {
     setIsProfessional(false);
   };
   
-
   return (
     <div className={style.contentAll} id="services">
       <div className={style.barra}></div>
