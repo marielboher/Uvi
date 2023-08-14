@@ -15,14 +15,32 @@ export default function Form() {
   };
 
   const [formData, setFormData] = useState(INITIAL_STATE);
+  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const validateForm = () => {
+    let tempErrors = {};
+    let isValid = true;
+
+    for (let key in INITIAL_STATE) {
+      if (!formData[key]) {
+        tempErrors[key] = `El campo ${key.replace("_", " ")} es requerido`;
+        isValid = false;
+      }
+    }
+
+    setErrors(tempErrors);
+    return isValid;
+  };
+
   const sendEmail = (e) => {
     e.preventDefault();
+
+    if (!validateForm()) return; // Si no es valido, no envia el mail
 
     emailjs
       .sendForm(
@@ -41,6 +59,7 @@ export default function Form() {
         }
       );
   };
+
   return (
     <div className={style.contentAll} id="contact-us">
       <div className={style.contentForm}>
@@ -59,7 +78,9 @@ export default function Form() {
               placeholder="Nombre"
               value={formData.user_name}
               onChange={handleChange}
+              required
             />
+            {errors.user_name && <p>{errors.user_name}</p>}
           </div>
           <div className={style.contentInputs}>
             <input
@@ -68,7 +89,9 @@ export default function Form() {
               placeholder="Apellido"
               value={formData.user_lastname}
               onChange={handleChange}
+              required
             />
+            {errors.user_name && <p>{errors.user_lastname}</p>}
           </div>
           <div className={style.contentInputs}>
             <input
@@ -77,7 +100,9 @@ export default function Form() {
               placeholder="Teléfono"
               value={formData.user_phone}
               onChange={handleChange}
+              required
             />
+            {errors.user_name && <p>{errors.user_phone}</p>}
           </div>
           <div className={style.contentInputs}>
             <input
@@ -86,7 +111,9 @@ export default function Form() {
               placeholder="Correo electrónico"
               value={formData.user_email}
               onChange={handleChange}
+              required
             />
+            {errors.user_name && <p>{errors.user_email}</p>}
           </div>
           <div className={style.contentInputs}>
             <textarea
@@ -95,7 +122,10 @@ export default function Form() {
               rows="5"
               value={formData.message}
               onChange={handleChange}
+              placeholder="Mensaje"
+              required
             ></textarea>
+            {errors.user_name && <p>{errors.message}</p>}
           </div>
 
           <button type="submit" value="Send">

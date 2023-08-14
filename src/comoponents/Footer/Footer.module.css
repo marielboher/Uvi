@@ -33,6 +33,10 @@
   gap: 1rem;
 }
 
+.contentLinks a{
+  text-decoration: none;
+  color: #999;
+}
 .links {
   font-size: 1.2rem;
 }

@@ -243,7 +243,7 @@ const ProfesionalService = () => {
             </label>
             <input type="checkbox" name="user_recomendar" />
           </div>
-          <div className={style.formServices}>
+          <div className={style.formServicesTextarea}>
             <label>Preferencias/Observaciones</label>
             <textarea type="text" name="user_preferencias" />
           </div>
@@ -268,7 +268,7 @@ const ProfesionalService = () => {
           Contamos con diferentes servicios diseñados para ayudarte a mejorar
           tus oportunidades y posibilidades de conseguir el empleo que estás
           buscando. Te invitamos a que los descubras y elijas los que se ajusten
-          a tus necesidades actuales. panel
+          a tus necesidades actuales. 
         </p>
       </div>
       <div
