@@ -1,6 +1,9 @@
 import React, { useRef, useState } from "react";
 import style from "./cardCompany.module.css";
 import emailjs from "@emailjs/browser";
+import toast, { Toaster } from "react-hot-toast";
+
+const notifySuccess = () => toast.success("Suscripcion enviada con éxito!");
 
 const CardCompany = () => {
   const INITIAL_STATE = {
@@ -87,6 +90,7 @@ const CardCompany = () => {
           console.log(result.text);
           setFormData(INITIAL_STATE);
           setErrors({});
+          notifySuccess();
         },
         (error) => {
           console.log(error.text);
@@ -96,6 +100,7 @@ const CardCompany = () => {
 
   return (
     <div className={style.contentCompany}>
+      <Toaster />
       <h4>
         Recibe recomendaciones de profesionales destacados para un área o sector
         específico en tu casilla de correo sin ningún costo.

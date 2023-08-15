@@ -216,6 +216,7 @@ const ProfesionalService = () => {
           form.current.reset();
           setFile(null);
           setErrors({});
+          window.location.href = "http://ayudar.ar/uvi";
         },
         (error) => {
           console.log(error.text);
@@ -302,9 +303,7 @@ const ProfesionalService = () => {
             <input type="checkbox" name="user_publicar" />
           </div>
           <div className={style.inputCheckbox}>
-            <label>
-              Evaluar y recomendar mi perfil profesional a empresas (Opcional)
-            </label>
+            <label>Evaluar y recomendar mi perfil (Opcional)</label>
             <input type="checkbox" name="user_recomendar" />
           </div>
           <div className={style.formServicesTextarea}>

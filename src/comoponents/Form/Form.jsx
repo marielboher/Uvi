@@ -3,6 +3,9 @@ import style from "./Form.module.css";
 import logo from "../../assets/logo1.png";
 import { TiSocialLinkedinCircular } from "react-icons/ti";
 import emailjs from "@emailjs/browser";
+import toast, { Toaster } from 'react-hot-toast';
+
+const notifySuccess = () => toast.success('Formulario enviado con éxito!');
 
 export default function Form() {
   const form = useRef();
@@ -42,7 +45,7 @@ export default function Form() {
     }
 
     setErrors(tempErrors);
-    console.log(tempErrors); // para ver qué errores se han detectado
+    console.log(tempErrors); 
     return Object.keys(tempErrors).length === 0;
   };
 
@@ -62,6 +65,7 @@ export default function Form() {
         (result) => {
           console.log(result.text);
           setFormData(INITIAL_STATE);
+          notifySuccess()
         },
         (error) => {
           console.log(error.text);
@@ -71,6 +75,7 @@ export default function Form() {
 
   return (
     <div className={style.contentAll} id="contact-us">
+      <Toaster/>
       <div className={style.contentForm}>
         <form ref={form} onSubmit={sendEmail}>
           <div className={style.contentTitle}>
