@@ -27,9 +27,53 @@ const CardCompany = () => {
       [name]: value,
     }));
   };
+  const [errors, setErrors] = useState({});
+
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!form.current.user_name.value) {
+      newErrors.user_name = "El nombre es requerido";
+    }
+    if (!form.current.user_lastname.value) {
+      newErrors.user_lastname = "El apellido es requerido";
+    }
+    if (!form.current.user_email.value) {
+      newErrors.user_email = "El email es requerido";
+    }
+    if (!form.current.user_modalidad.value) {
+      newErrors.user_modalidad = "La modalidad es requerida";
+    }
+    if (!form.current.user_area.value) {
+      newErrors.user_area = "El área es requerida";
+    }
+    if (!form.current.user_profile.value) {
+      newErrors.user_profile = "El perfil es requerido";
+    }
+    if (!form.current.user_location.value) {
+      newErrors.user_location = "La ubicación es requerida";
+    }
+    if (!form.current.user_company.value) {
+      newErrors.user_company = "La empresa es requerida";
+    }
+    if (!form.current.personal_linkedin.value) {
+      newErrors.personal_linkedin = "El perfil personal es requerido";
+    }
+    if (!form.current.company_linkedin.value) {
+      newErrors.company_linkedin = "El perfil de la empresa es requerido";
+    }
+
+    setErrors(newErrors);
+    console.log(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const sendEmail = (e) => {
     e.preventDefault();
+
+    if (!validateForm()) {
+      return;
+    }
 
     emailjs
       .sendForm(
@@ -42,6 +86,7 @@ const CardCompany = () => {
         (result) => {
           console.log(result.text);
           setFormData(INITIAL_STATE);
+          setErrors({});
         },
         (error) => {
           console.log(error.text);
@@ -51,10 +96,10 @@ const CardCompany = () => {
 
   return (
     <div className={style.contentCompany}>
-      <p>
+      <h4>
         Recibe recomendaciones de profesionales destacados para un área o sector
         específico en tu casilla de correo sin ningún costo.
-      </p>
+      </h4>
       <form ref={form} onSubmit={sendEmail} className={style.form}>
         <label htmlFor="firstName">Nombre:</label>
         <input
@@ -63,8 +108,10 @@ const CardCompany = () => {
           name="user_name"
           value={formData.user_name}
           onChange={handleChange}
-          required
         />
+        {errors.user_name && (
+          <p className={style.errorText}>{errors.user_name}</p>
+        )}
         <label htmlFor="lastName">Apellido:</label>
         <input
           type="text"
@@ -72,8 +119,10 @@ const CardCompany = () => {
           name="user_lastname"
           value={formData.user_lastname}
           onChange={handleChange}
-          required
         />
+        {errors.user_lastname && (
+          <p className={style.errorText}>{errors.user_lastname}</p>
+        )}
         <label htmlFor="email">Correo electrónico:</label>
         <input
           type="email"
@@ -81,8 +130,10 @@ const CardCompany = () => {
           name="user_email"
           value={formData.user_email}
           onChange={handleChange}
-          required
         />
+        {errors.user_email && (
+          <p className={style.errorText}>{errors.user_email}</p>
+        )}
         <label htmlFor="company">Empresa:</label>
         <input
           type="text"
@@ -91,6 +142,9 @@ const CardCompany = () => {
           value={formData.user_company}
           onChange={handleChange}
         />
+        {errors.user_company && (
+          <p className={style.errorText}>{errors.user_company}</p>
+        )}
         <label htmlFor="personalLinkedIn">Perfil de LinkedIn personal:</label>
         <input
           type="text"
@@ -99,6 +153,9 @@ const CardCompany = () => {
           value={formData.personal_linkedin}
           onChange={handleChange}
         />
+        {errors.personal_linkedin && (
+          <p className={style.errorText}>{errors.personal_linkedin}</p>
+        )}
         <label htmlFor="companyLinkedIn">
           Perfil de LinkedIn de la empresa:
         </label>
@@ -109,6 +166,9 @@ const CardCompany = () => {
           value={formData.company_linkedin}
           onChange={handleChange}
         />
+        {errors.company_linkedin && (
+          <p className={style.errorText}>{errors.company_linkedin}</p>
+        )}
         <label htmlFor="companyWebsite">Página web de la empresa:</label>
         <input
           type="text"
@@ -125,6 +185,9 @@ const CardCompany = () => {
           value={formData.user_profile}
           onChange={handleChange}
         />
+        {errors.user_profile && (
+          <p className={style.errorText}>{errors.user_profile}</p>
+        )}
         <label htmlFor="desiredProfile">Área(s)/Cargo(s)</label>
         <input
           type="text"
@@ -133,6 +196,9 @@ const CardCompany = () => {
           value={formData.user_area}
           onChange={handleChange}
         />
+        {errors.user_area && (
+          <p className={style.errorText}>{errors.user_area}</p>
+        )}
         <label htmlFor="mode">Modalidad:</label>
         <select
           id="mode"
@@ -145,6 +211,9 @@ const CardCompany = () => {
           <option value="Híbrido">Híbrido</option>
           <option value="Remoto">Remoto</option>
         </select>
+        {errors.user_modalidad && (
+          <p className={style.errorText}>{errors.user_modalidad}</p>
+        )}
         <label htmlFor="location">Ubicación:</label>
         <input
           type="text"
@@ -153,6 +222,9 @@ const CardCompany = () => {
           value={formData.user_location}
           onChange={handleChange}
         />
+        {errors.user_location && (
+          <p className={style.errorText}>{errors.user_location}</p>
+        )}
         <button type="submit" className={style.companyButton}>
           Suscribirse
         </button>
