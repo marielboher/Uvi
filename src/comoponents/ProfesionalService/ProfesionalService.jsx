@@ -2,7 +2,6 @@ import React, { useRef, useState } from "react";
 import CardService from "../CardService/CardService";
 import { useServices } from "../../context/ServiceContext";
 import style from "./profesionalService.module.css";
-import { Reorder } from "framer-motion";
 import CardCompany from "../CardCompany/CardCompany";
 import emailjs from "@emailjs/browser";
 import { uploadFile } from "../../firebase/config";
@@ -141,10 +140,49 @@ const ProfesionalService = () => {
 
   const [file, setFile] = useState(null);
 
+  const [errors, setErrors] = useState({});
+
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!form.current.user_name.value) {
+      newErrors.user_name = "El nombre es requerido";
+    }
+    if (!form.current.user_lastname.value) {
+      newErrors.user_lastname = "El apellido es requerido";
+    }
+    if (!form.current.user_linkedin.value) {
+      newErrors.user_linkedin = "El perfil de LinkedIn es requerido";
+    }
+    if (!form.current.user_email.value) {
+      newErrors.user_email = "El email es requerido";
+    }
+    if (!form.current.user_number.value) {
+      newErrors.user_number = "El número de teléfono es requerido";
+    }
+    if (!form.current.user_location.value) {
+      newErrors.user_location = "La localidad es requerida";
+    }
+    if (!form.current.user_area.value) {
+      newErrors.user_area = "El área de interés es requerida";
+    }
+    if (!form.current.user_modalidad.value) {
+      newErrors.user_modalidad = "La modalidad de búsqueda es requerida";
+    }
+
+    setErrors(newErrors);
+    console.log(newErrors); // para ver qué errores se han detectado
+    return Object.keys(newErrors).length === 0;
+  };
+
   const form = useRef();
 
   const sendEmail = async (e) => {
     e.preventDefault();
+
+    if (!validateForm()) {
+      return;
+    }
 
     let fileURL = await uploadFile(file);
 
@@ -177,6 +215,7 @@ const ProfesionalService = () => {
           console.log(selectedServices);
           form.current.reset();
           setFile(null);
+          setErrors({});
         },
         (error) => {
           console.log(error.text);
@@ -190,22 +229,38 @@ const ProfesionalService = () => {
           <div className={style.formServices}>
             <label>Nombre</label>
             <input type="text" name="user_name" />
+
+            {errors.user_name && (
+              <p className={style.errorText}>{errors.user_name}</p>
+            )}
           </div>
           <div className={style.formServices}>
             <label>Apellido</label>
             <input type="text" name="user_lastname" />
+            {errors.user_lastname && (
+              <p className={style.errorText}>{errors.user_lastname}</p>
+            )}
           </div>
           <div className={style.formServices}>
             <label>Correo electrónico</label>
             <input type="text" name="user_email" />
+            {errors.user_email && (
+              <p className={style.errorText}>{errors.user_email}</p>
+            )}
           </div>
           <div className={style.formServices}>
             <label>Número de WhatsApp</label>
             <input type="text" name="user_number" />
+            {errors.user_number && (
+              <p className={style.errorText}>{errors.user_number}</p>
+            )}
           </div>
           <div className={style.formServices}>
             <label>Perfil de Linkedin</label>
-            <input type="text" name="linkedin" />
+            <input type="text" name="user_linkedin" />
+            {errors.user_linkedin && (
+              <p className={style.errorText}>{errors.user_linkedin}</p>
+            )}
           </div>
           <div className={style.formServices}>
             <label>Modalidad</label>
@@ -215,14 +270,23 @@ const ProfesionalService = () => {
               <option value="Híbrido">Híbrido</option>
               <option value="Remoto">Remoto</option>
             </select>
+            {errors.user_location && (
+              <p className={style.errorText}>{errors.user_location}</p>
+            )}
           </div>
           <div className={style.formServices}>
             <label>Área(s)/Cargo(s)</label>
             <input type="text" name="user_area" />
+            {errors.user_area && (
+              <p className={style.errorText}>{errors.user_area}</p>
+            )}
           </div>
           <div className={style.formServices}>
             <label>Ubicacion</label>
             <input type="text" name="user_modalidad" />
+            {errors.user_modalidad && (
+              <p className={style.errorText}>{errors.user_modalidad}</p>
+            )}
           </div>
           <div className={style.fileInput}>
             <label>Adjuntar CV</label>
@@ -268,7 +332,7 @@ const ProfesionalService = () => {
           Contamos con diferentes servicios diseñados para ayudarte a mejorar
           tus oportunidades y posibilidades de conseguir el empleo que estás
           buscando. Te invitamos a que los descubras y elijas los que se ajusten
-          a tus necesidades actuales. 
+          a tus necesidades actuales.
         </p>
       </div>
       <div

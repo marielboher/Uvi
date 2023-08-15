@@ -23,24 +23,33 @@ export default function Form() {
   };
 
   const validateForm = () => {
-    let tempErrors = {};
-    let isValid = true;
+    const tempErrors = {};
 
-    for (let key in INITIAL_STATE) {
-      if (!formData[key]) {
-        tempErrors[key] = `El campo ${key.replace("_", " ")} es requerido`;
-        isValid = false;
-      }
+    if (!form.current.user_name.value) {
+      tempErrors.user_name = "Por favor, ingresa tu nombre.";
+    }
+    if (!form.current.user_lastname.value) {
+      tempErrors.user_lastname = "Por favor, ingresa tu apellido.";
+    }
+    if (!form.current.user_phone.value) {
+      tempErrors.user_phone = "Por favor, ingresa tu teléfono.";
+    }
+    if (!form.current.user_email.value) {
+      tempErrors.user_email = "Por favor, ingresa tu email.";
+    }
+    if (!form.current.message.value) {
+      tempErrors.message = "Por favor, ingresa tu mensaje.";
     }
 
     setErrors(tempErrors);
-    return isValid;
+    console.log(tempErrors); // para ver qué errores se han detectado
+    return Object.keys(tempErrors).length === 0;
   };
 
   const sendEmail = (e) => {
     e.preventDefault();
 
-    if (!validateForm()) return; // Si no es valido, no envia el mail
+    if (!validateForm()) return;
 
     emailjs
       .sendForm(
@@ -78,9 +87,10 @@ export default function Form() {
               placeholder="Nombre"
               value={formData.user_name}
               onChange={handleChange}
-              required
             />
-            {errors.user_name && <p>{errors.user_name}</p>}
+            {errors.user_name && (
+              <p className={style.errorText}>{errors.user_name}</p>
+            )}
           </div>
           <div className={style.contentInputs}>
             <input
@@ -89,9 +99,10 @@ export default function Form() {
               placeholder="Apellido"
               value={formData.user_lastname}
               onChange={handleChange}
-              required
             />
-            {errors.user_name && <p>{errors.user_lastname}</p>}
+            {errors.user_lastname && (
+              <p className={style.errorText}>{errors.user_lastname}</p>
+            )}
           </div>
           <div className={style.contentInputs}>
             <input
@@ -100,9 +111,10 @@ export default function Form() {
               placeholder="Teléfono"
               value={formData.user_phone}
               onChange={handleChange}
-              required
             />
-            {errors.user_name && <p>{errors.user_phone}</p>}
+            {errors.user_phone && (
+              <p className={style.errorText}>{errors.user_phone}</p>
+            )}
           </div>
           <div className={style.contentInputs}>
             <input
@@ -111,9 +123,10 @@ export default function Form() {
               placeholder="Correo electrónico"
               value={formData.user_email}
               onChange={handleChange}
-              required
             />
-            {errors.user_name && <p>{errors.user_email}</p>}
+            {errors.user_email && (
+              <p className={style.errorText}>{errors.user_email}</p>
+            )}
           </div>
           <div className={style.contentInputs}>
             <textarea
@@ -123,9 +136,10 @@ export default function Form() {
               value={formData.message}
               onChange={handleChange}
               placeholder="Mensaje"
-              required
             ></textarea>
-            {errors.user_name && <p>{errors.message}</p>}
+            {errors.message && (
+              <p className={style.errorText}>{errors.message}</p>
+            )}
           </div>
 
           <button type="submit" value="Send">

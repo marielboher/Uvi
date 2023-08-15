@@ -63,3 +63,20 @@
     margin: 50px 0 50px 0;
     color: #fff;
 }
+
+@media (max-width: 480px) {
+    .contentCompany p {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1rem;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .form label {
+        margin-bottom: 5px;
+        margin-top: 5px;
+        font-size: 0.9rem;
+    }
+}
