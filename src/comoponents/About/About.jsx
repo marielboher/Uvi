@@ -15,7 +15,6 @@ export default function About() {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    arrow: true,
     autoplay: true,
   };
 
@@ -107,7 +106,8 @@ export default function About() {
           <h3>Reseñas</h3>
         </div>
         <div className={style.sliderContainer}>
-          <Slider {...settings} className={style.sliderStyles}>
+          <Slider {...settings} className={style.sliderStyles}
+         >
             {teamReviews.map((review, index) => (
               <div key={index} className={style.swiperContainer}>
                 <CardReview

@@ -145,7 +145,6 @@ export default function Home() {
                   handleProfessionalClick();
                   setActiveButton(false);
                 }}
-                spy={true}
                 smooth="true"
                 offset={-20}
                 duration={500}
@@ -159,7 +158,6 @@ export default function Home() {
               <button
                 onClick={handleCompanyClick}
                 activeclass="services"
-                spy={true}
                 smooth="true"
                 offset={20}
                 duration={500}

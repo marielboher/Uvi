@@ -29,7 +29,6 @@ export default function Navbar({ dataAboutPosition }) {
         <Link
           activeclass="active"
           to="home"
-          spy={true}
           ssmooth="true"
           offset={0}
           duration={500}
@@ -42,7 +41,7 @@ export default function Navbar({ dataAboutPosition }) {
           <Link
             activeclass="active"
             to="home"
-            spy={true}
+
             ssmooth="true"
             offset={0}
             duration={500}
@@ -64,7 +63,6 @@ export default function Navbar({ dataAboutPosition }) {
         <Link
           activeclass="active"
           to="home"
-          spy={true}
           ssmooth="true"
           offset={0}
           duration={500}
@@ -75,7 +73,6 @@ export default function Navbar({ dataAboutPosition }) {
         <Link
           activeclass="active"
           to="about"
-          spy={true}
           ssmooth="true"
           offset={20}
           duration={500}
@@ -88,7 +85,6 @@ export default function Navbar({ dataAboutPosition }) {
         <Link
           activeclass="active"
           to="services"
-          spy={true}
           ssmooth="true"
           offset={-20}
           duration={500}
@@ -101,7 +97,6 @@ export default function Navbar({ dataAboutPosition }) {
         <Link
           activeclass="active"
           to="contact-us"
-          spy={true}
           ssmooth="true"
           offset={0}
           duration={500}

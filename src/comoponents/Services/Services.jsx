@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import style from "./Services.module.css";
-import { Reorder } from "framer-motion";
-import CardService from "../CardService/CardService";
 import { useServices } from "../../context/ServiceContext";
 import CardCompany from "../CardCompany/CardCompany";
 import ProfesionalService from "../ProfesionalService/ProfesionalService";

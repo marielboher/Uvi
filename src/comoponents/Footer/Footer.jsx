@@ -30,7 +30,6 @@ export default function Footer() {
         <Link
           activeclass="active"
           to="home"
-          spy={true}
           smooth="true"
           offset={0}
           duration={500}
@@ -41,7 +40,6 @@ export default function Footer() {
         <Link
           activeclass="active"
           to="about"
-          spy={true}
           smooth="true"
           offset={20}
           duration={500}
@@ -53,7 +51,6 @@ export default function Footer() {
         <Link
           activeclass="active"
           to="services"
-          spy={true}
           smooth="true"
           offset={0}
           duration={500}
@@ -64,7 +61,6 @@ export default function Footer() {
         <Link
           activeclass="active"
           to="contact-us"
-          spy={true}
           smooth="true"
           offset={50}
           duration={500}

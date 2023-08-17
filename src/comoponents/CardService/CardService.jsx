@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import style from "./CardService.module.css";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { useServices } from "../../context/ServiceContext";
+import { Link } from "react-router-dom";
 
 export default function CardService({
   character,
@@ -23,16 +24,16 @@ export default function CardService({
   const { toggleService, selectedServices, setSelectedServices } =
     useServices();
 
-    useEffect(() => {
-      if (defaultOpen) {
-        toggleService(number);
-        setDefaultOpen(false);
-      }
-    }, [selectedServices])
-  
-    const toggleDescription = () => {
-      setShowMore(!showMore);
-    };
+  useEffect(() => {
+    if (defaultOpen) {
+      toggleService(number);
+      setDefaultOpen(false);
+    }
+  }, [selectedServices]);
+
+  const toggleDescription = () => {
+    setShowMore(!showMore);
+  };
 
   const handleCheckboxChange = (itemID) => {
     if (itemID == 1) {
@@ -103,7 +104,9 @@ export default function CardService({
           )}
         </div>
         {isGuideService ? (
-          <button className={style.downloadButton}>Descargar</button>
+          <Link to={"http://uvi.ar/docs/guia_profesional_uvi.pdf"} className={style.downloadLink} target="_blank">
+            <button className={style.downloadButton}>Descargar</button>
+          </Link>
         ) : (
           <button
             onClick={handleSolicitar}

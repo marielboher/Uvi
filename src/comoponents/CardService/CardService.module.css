@@ -130,6 +130,10 @@
   cursor: pointer;
   border-radius: 10px;
 }
+.downloadLink{
+  text-decoration: none;
+  color: #7a1bb5;
+}
 
 @media (max-width: 650px) {
   .contentAll {

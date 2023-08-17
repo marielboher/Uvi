@@ -171,7 +171,6 @@ const ProfesionalService = () => {
     }
 
     setErrors(newErrors);
-    console.log(newErrors); // para ver qué errores se han detectado
     return Object.keys(newErrors).length === 0;
   };
 
@@ -216,7 +215,7 @@ const ProfesionalService = () => {
           form.current.reset();
           setFile(null);
           setErrors({});
-          window.location.href = "http://ayudar.ar/uvi";
+          window.open("http://ayudar.ar/uvi", "_blank");
         },
         (error) => {
           console.log(error.text);
@@ -337,14 +336,14 @@ const ProfesionalService = () => {
       <div
         axis="y"
         values={services.map((service) => service.number)}
-        onReorder={(values) =>
-          setServices(
-            values.map((value, index) => ({
-              ...services.find((service) => service.number === value),
-              number: index + 1,
-            }))
-          )
-        }
+        // onReorder={(values) =>
+        //   setServices(
+        //     values.map((value, index) => ({
+        //       ...services.find((service) => service.number === value),
+        //       number: index + 1,
+        //     }))
+        //   )
+        // }
         className={style.contentCards}
       >
         {services.map((service) => {
