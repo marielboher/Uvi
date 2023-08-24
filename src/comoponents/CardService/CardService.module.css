@@ -117,7 +117,7 @@
   border-radius: 10px;
 }
 
-.downloadButton{
+.downloadButton {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -130,9 +130,16 @@
   cursor: pointer;
   border-radius: 10px;
 }
-.downloadLink{
+
+.downloadLink {
   text-decoration: none;
   color: #7a1bb5;
+}
+
+.listIncludes li {
+  list-style: disc;
+  margin: 5px 0 5px 0;
+  font-size: 1rem;
 }
 
 @media (max-width: 650px) {
@@ -166,9 +173,10 @@
 
   }
 
-  .textInfo{
+  .textInfo {
     font-size: 1rem;
   }
+
   .title {
     font-size: 14px;
     margin: 0;

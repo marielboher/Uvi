@@ -1,11 +1,12 @@
 import React, { useRef, useState } from "react";
 import style from "./Form.module.css";
 import logo from "../../assets/logo1.png";
-import { TiSocialLinkedinCircular } from "react-icons/ti";
+import logoFooter from "../../assets/logo2.png";
+import { TiMail, TiSocialLinkedinCircular } from "react-icons/ti";
 import emailjs from "@emailjs/browser";
-import toast, { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from "react-hot-toast";
 
-const notifySuccess = () => toast.success('Formulario enviado con éxito!');
+const notifySuccess = () => toast.success("Formulario enviado con éxito!");
 
 export default function Form() {
   const form = useRef();
@@ -45,7 +46,7 @@ export default function Form() {
     }
 
     setErrors(tempErrors);
-    console.log(tempErrors); 
+    console.log(tempErrors);
     return Object.keys(tempErrors).length === 0;
   };
 
@@ -65,7 +66,7 @@ export default function Form() {
         (result) => {
           console.log(result.text);
           setFormData(INITIAL_STATE);
-          notifySuccess()
+          notifySuccess();
         },
         (error) => {
           console.log(error.text);
@@ -75,7 +76,7 @@ export default function Form() {
 
   return (
     <div className={style.contentAll} id="contact-us">
-      <Toaster/>
+      <Toaster />
       <div className={style.contentForm}>
         <form ref={form} onSubmit={sendEmail}>
           <div className={style.contentTitle}>
@@ -161,6 +162,25 @@ export default function Form() {
             <TiSocialLinkedinCircular size="50" className={style.networks} />
           </a>
         </div>
+      </div>
+      <div className={style.infoUvi}>
+      <div className={style.contentText}>
+        <div className={style.networks}>
+          <a
+            href="https://www.linkedin.com/company/universo-i/"
+            target="_blank"
+          >
+            <TiSocialLinkedinCircular size="40" className={style.logos} />
+          </a>
+          <p>
+            contacto@uvi.com.ar
+          </p>
+          <a href="mailto:info@uvi.com.ar" target="_blank">
+            <TiMail size="40" className={style.logos} />
+          </a>
+        </div>
+        <img src={logoFooter} className={style.logoFooter}></img>
+      </div>
       </div>
     </div>
   );

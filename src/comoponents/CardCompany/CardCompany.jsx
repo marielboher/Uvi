@@ -44,9 +44,6 @@ const CardCompany = () => {
     if (!form.current.user_email.value) {
       newErrors.user_email = "El email es requerido";
     }
-    if (!form.current.user_modalidad.value) {
-      newErrors.user_modalidad = "La modalidad es requerida";
-    }
     if (!form.current.user_area.value) {
       newErrors.user_area = "El área es requerida";
     }
@@ -66,6 +63,14 @@ const CardCompany = () => {
       newErrors.company_linkedin = "El perfil de la empresa es requerido";
     }
 
+    const modalidadesChecked = Array.from(
+      form.current.querySelectorAll('input[name="user_modalidad"]:checked')
+    ).map((input) => input.value);
+
+    if (modalidadesChecked.length === 0) {
+      newErrors.user_modalidad = "Debe seleccionar al menos una modalidad";
+    }
+
     setErrors(newErrors);
     console.log(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -73,6 +78,15 @@ const CardCompany = () => {
 
   const sendEmail = (e) => {
     e.preventDefault();
+
+    const modalidadesChecked = Array.from(
+      form.current.querySelectorAll('input[name="user_modalidad"]:checked')
+    ).map((input) => input.value);
+
+    if (!validateForm()) {
+      return;
+    }
+
 
     if (!validateForm()) {
       return;
@@ -204,21 +218,30 @@ const CardCompany = () => {
         {errors.user_area && (
           <p className={style.errorText}>{errors.user_area}</p>
         )}
-        <label htmlFor="mode">Modalidad:</label>
-        <select
-          id="mode"
-          name="user_modalidad"
-          value={formData.user_modalidad}
-          onChange={handleChange}
-        >
-          <option value="">Seleccione una opción</option>
-          <option value="Presencial">Presencial</option>
-          <option value="Híbrido">Híbrido</option>
-          <option value="Remoto">Remoto</option>
-        </select>
-        {errors.user_modalidad && (
-          <p className={style.errorText}>{errors.user_modalidad}</p>
-        )}
+        <div className={style.userModalidad}>
+          <label>Modalidad</label>
+              <div className={style.checkboxContainer}>
+                <label>
+                  <input
+                    type="checkbox"
+                    name="user_modalidad"
+                    value="Presencial"
+                  />
+                  Presencial
+                </label>
+                <label>
+                  <input type="checkbox" name="user_modalidad" value="Híbrido" />
+                  Híbrido
+                </label>
+                <label>
+                  <input type="checkbox" name="user_modalidad" value="Remoto" />
+                  Remoto
+                </label>
+              </div>
+              {errors.user_modalidad && (
+                <p className={style.errorText}>{errors.user_modalidad}</p>
+              )}
+        </div>
         <label htmlFor="location">Ubicación:</label>
         <input
           type="text"
@@ -230,6 +253,7 @@ const CardCompany = () => {
         {errors.user_location && (
           <p className={style.errorText}>{errors.user_location}</p>
         )}
+        <p className={style.aclaracion}>Por el momento no hacemos búsquedas personalizadas en base a otros requerimientos específicos.</p>
         <button type="submit" className={style.companyButton}>
           Suscribirse
         </button>

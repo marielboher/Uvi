@@ -1,10 +1,11 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import CardService from "../CardService/CardService";
 import { useServices } from "../../context/ServiceContext";
 import style from "./profesionalService.module.css";
 import CardCompany from "../CardCompany/CardCompany";
 import emailjs from "@emailjs/browser";
 import { uploadFile } from "../../firebase/config";
+import { useLocation } from "react-router-dom";
 
 const ProfesionalService = () => {
   const {
@@ -12,17 +13,20 @@ const ProfesionalService = () => {
     setActiveButton,
     isProfessional,
     selectedService,
-    setSelectedService,
+    setSelectedServices,
     selectedServices,
   } = useServices();
 
   const handleSolicitService = (serviceNumber) => {
-    if (selectedServices === serviceNumber) {
-      setSelectedService(null);
+    if (selectedServices.includes(serviceNumber)) {
+      setSelectedServices((prev) =>
+        prev.filter((num) => num !== serviceNumber)
+      );
     } else {
-      setSelectedService(serviceNumber);
+      setSelectedServices((prev) => [...prev, serviceNumber]);
     }
   };
+
   const [checkState, setCheckState] = useState(false);
 
   const [services, setServices] = useState([
@@ -41,6 +45,7 @@ const ProfesionalService = () => {
         "Instructivo de cómo realizar las modificaciones ",
         "Publicación y difusión de CV en LinkedIn (opcional) ",
       ],
+      price: 1500,
     },
     {
       number: 2,
@@ -56,6 +61,7 @@ const ProfesionalService = () => {
         "IInforme con recomendaciones y sugerencias para realizar modificaciones en la presentación, resumen, experiencias, habilidades y secciones adicionales. ",
         "Instructivo de cómo realizar las modificaciones ",
       ],
+      price: 1500,
     },
     {
       number: 3,
@@ -73,6 +79,7 @@ const ProfesionalService = () => {
         "Instructivo de cómorealizar las modificaciones ",
         "Publicación y difusión de CV en LinkedIn (opcional) ",
       ],
+      price: 1500,
     },
     {
       number: 4,
@@ -89,6 +96,7 @@ const ProfesionalService = () => {
         "Información en formato digital para la importación directa de los datos de la nueva cuenta ",
         "Instructivo de cómo realizar futuras modificaciones ",
       ],
+      price: 1500,
     },
     {
       number: 5,
@@ -105,6 +113,7 @@ const ProfesionalService = () => {
         "Entrega del documento en formato PDF y enlace de edición para futuras modificaciones",
         "Instructivo de cómo realizar modificaciones",
       ],
+      price: 1500,
     },
     {
       number: 6,
@@ -121,6 +130,7 @@ const ProfesionalService = () => {
         "Sugerencias y recomendaciones adaptables a distintos tipos de entrevista",
         " Evaluación del perfil profesional y recomendación a empresas (Opcional)",
       ],
+      price: 2500,
     },
     {
       number: 7,
@@ -138,7 +148,31 @@ const ProfesionalService = () => {
     },
   ]);
 
+  
+  const [selectedServicePrices, setSelectedServicePrices] = useState({});
+
+  useEffect(() => {
+    const newSelectedServicePrices = {};
+    selectedServices.forEach((selectedService) => {
+      const service = services.find((s) => s.text === selectedService);
+      if (service) {
+        newSelectedServicePrices[selectedService] = service.price;
+      }
+    });
+    setSelectedServicePrices(newSelectedServicePrices);
+  }, [selectedServices]);
+
+  const calculateTotalPrice = () => {
+    return Object.values(selectedServicePrices).reduce(
+      (total, price) => total + price,
+      0
+    );
+  };
   const [file, setFile] = useState(null);
+
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const id = queryParams.get("ID");
 
   const [errors, setErrors] = useState({});
 
@@ -166,8 +200,12 @@ const ProfesionalService = () => {
     if (!form.current.user_area.value) {
       newErrors.user_area = "El área de interés es requerida";
     }
-    if (!form.current.user_modalidad.value) {
-      newErrors.user_modalidad = "La modalidad de búsqueda es requerida";
+    const modalidadesChecked = Array.from(
+      form.current.querySelectorAll('input[name="user_modalidad"]:checked')
+    ).map((input) => input.value);
+
+    if (modalidadesChecked.length === 0) {
+      newErrors.user_modalidad = "Debe seleccionar al menos una modalidad";
     }
 
     setErrors(newErrors);
@@ -179,6 +217,10 @@ const ProfesionalService = () => {
   const sendEmail = async (e) => {
     e.preventDefault();
 
+    const modalidadesChecked = Array.from(
+      form.current.querySelectorAll('input[name="user_modalidad"]:checked')
+    ).map((input) => input.value);
+
     if (!validateForm()) {
       return;
     }
@@ -186,13 +228,14 @@ const ProfesionalService = () => {
     let fileURL = await uploadFile(file);
 
     const formData = {
+      user_id: id,
       user_name: form.current.user_name.value,
       user_lastname: form.current.user_lastname.value,
       user_email: form.current.user_email.value,
       user_number: form.current.user_number.value,
       user_location: form.current.user_location.value,
       user_area: form.current.user_area.value,
-      user_modalidad: form.current.user_modalidad.value,
+      user_modalidad: modalidadesChecked.join(", "),
       user_publicar: form.current.user_publicar.checked,
       user_recomendar: form.current.user_recomendar.checked,
       user_preferencias: form.current.user_preferencias.value,
@@ -201,6 +244,7 @@ const ProfesionalService = () => {
     };
 
     // Envía el correo electrónico
+
     emailjs
       .send(
         "service_qhtsfhf",
@@ -211,7 +255,7 @@ const ProfesionalService = () => {
       .then(
         (result) => {
           console.log(result.text);
-          console.log(selectedServices);
+          console.log(modalidadesChecked);
           form.current.reset();
           setFile(null);
           setErrors({});
@@ -263,15 +307,34 @@ const ProfesionalService = () => {
             )}
           </div>
           <div className={style.formServices}>
-            <label>Modalidad</label>
-            <select name="user_location">
-              <option value="">Seleccione una opción</option>
-              <option value="Presencial">Presencial</option>
-              <option value="Híbrido">Híbrido</option>
-              <option value="Remoto">Remoto</option>
-            </select>
+            <label>Ubicación</label>
+            <input type="text" name="user_location" />
             {errors.user_location && (
               <p className={style.errorText}>{errors.user_location}</p>
+            )}
+          </div>
+          <div className={style.formServicesMod}>
+            <label>Modalidad</label>
+            <div className={style.checkboxContainer}>
+              <label>
+                <input
+                  type="checkbox"
+                  name="user_modalidad"
+                  value="Presencial"
+                />
+                Presencial
+              </label>
+              <label>
+                <input type="checkbox" name="user_modalidad" value="Híbrido" />
+                Híbrido
+              </label>
+              <label>
+                <input type="checkbox" name="user_modalidad" value="Remoto" />
+                Remoto
+              </label>
+            </div>
+            {errors.user_modalidad && (
+              <p className={style.errorText}>{errors.user_modalidad}</p>
             )}
           </div>
           <div className={style.formServices}>
@@ -279,13 +342,6 @@ const ProfesionalService = () => {
             <input type="text" name="user_area" />
             {errors.user_area && (
               <p className={style.errorText}>{errors.user_area}</p>
-            )}
-          </div>
-          <div className={style.formServices}>
-            <label>Ubicacion</label>
-            <input type="text" name="user_modalidad" />
-            {errors.user_modalidad && (
-              <p className={style.errorText}>{errors.user_modalidad}</p>
             )}
           </div>
           <div className={style.fileInput}>
@@ -315,6 +371,7 @@ const ProfesionalService = () => {
             Siéntete libre de ajustar la donación por debajo o por arriba de la
             sugerencia según tu capacidad.
           </p>
+          <p> Donación sugerida: ${calculateTotalPrice()}</p>{" "}
           <button type="submit" className={style.buttonDonate}>
             Donar
           </button>
@@ -336,14 +393,6 @@ const ProfesionalService = () => {
       <div
         axis="y"
         values={services.map((service) => service.number)}
-        // onReorder={(values) =>
-        //   setServices(
-        //     values.map((value, index) => ({
-        //       ...services.find((service) => service.number === value),
-        //       number: index + 1,
-        //     }))
-        //   )
-        // }
         className={style.contentCards}
       >
         {services.map((service) => {

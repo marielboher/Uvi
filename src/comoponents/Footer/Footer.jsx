@@ -7,67 +7,48 @@ import { Link } from "react-scroll";
 export default function Footer() {
   return (
     <div className={style.contentAll} id="contacts">
-      <div className={style.contentText}>
-        <img src={logo} alt="" />
-        <div className={style.networks}>
-          <a
-            href="https://www.linkedin.com/company/universo-i/"
-            target="_blank"
-          >
-            <TiSocialLinkedinCircular size="40" className={style.logos} />
-          </a>
-          <p>
-            {/* <TiMail size="40" className={style.logos} /> */}
-            contacto@uvi.com.ar
-          </p>
-          <a href="mailto:info@uvi.com.ar" target="_blank">
-            <TiMail size="40" className={style.logos} />
-          </a>
-        </div>
-      </div>
-
       <div className={style.contentLinks}>
-        <Link
-          activeclass="active"
-          to="home"
-          smooth="true"
-          offset={0}
-          duration={500}
-          className={style.links}
-        >
-          Inicio
-        </Link>
-        <Link
-          activeclass="active"
-          to="about"
-          smooth="true"
-          offset={20}
-          duration={500}
-          className={style.links}
-        >
-          Nosotros
-        </Link>
-
-        <Link
-          activeclass="active"
-          to="services"
-          smooth="true"
-          offset={0}
-          duration={500}
-          className={style.links}
-        >
-          Servicios
-        </Link>
-        <Link
-          activeclass="active"
-          to="contact-us"
-          smooth="true"
-          offset={50}
-          duration={500}
-          className={style.links}
-        >
-          Contacto
-        </Link>
+          <Link
+            activeclass="active"
+            to="home"
+            smooth="true"
+            offset={0}
+            duration={500}
+            className={style.links}
+          >
+            Inicio
+          </Link>
+          <Link
+            activeclass="active"
+            to="about"
+            smooth="true"
+            offset={20}
+            duration={500}
+            className={style.links}
+          >
+            Nosotros
+          </Link>
+  
+          <Link
+            activeclass="active"
+            to="services"
+            smooth="true"
+            offset={0}
+            duration={500}
+            className={style.links}
+          >
+            Servicios
+          </Link>
+          <Link
+            activeclass="active"
+            to="contact-us"
+            smooth="true"
+            offset={50}
+            duration={500}
+            className={style.links}
+          >
+            Contacto
+          </Link>
       </div>
 
       <div className={style.contentCreatorCopyright}>

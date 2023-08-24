@@ -214,6 +214,32 @@
     font-size: 0.9rem;
     text-align: start;
 }
+.formServicesMod{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
+}
+
+.checkboxContainer{
+    display: flex;
+    align-items: start;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+.checkboxContainer label{
+    font-size: 1rem;
+    padding: 5px;
+}
+.checkboxContainer input{
+    width: 20px;
+    height: 10px;
+    margin-right: 10px;
+}
+
 @media (max-width: 480px) {
     .cardServices {
         display: flex;
@@ -288,5 +314,32 @@
     .containerBtn p{
         font-size: 1rem;
         margin: 15px;
+    }
+    .formServicesMod{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 90%;
+        padding: 20px;
+        font-size: 14px
+    }
+    
+    .checkboxContainer{
+        display: flex;
+        align-items: start;
+        justify-content: flex-start;
+        flex-direction: column;
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+    .checkboxContainer label{
+        font-size: 1rem;
+        padding: 5px;
+        font-size: 14px
+    }
+    .checkboxContainer input{
+        width: 20px;
+        height: 10px;
+        margin-right: 10px;
     }
 }

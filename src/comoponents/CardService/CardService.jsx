@@ -82,15 +82,16 @@ export default function CardService({
         <div className={style.infoMore} data-isopen={isOpen}>
           {showMore ? (
             <div className={style.infoMoreContent} data-isopen={isOpen}>
-              {descriptionComplete}
-              {includes}
-              <button
-                className={style.showMoreButton}
-                onClick={toggleDescription}
-              >
-                Leer menos
-              </button>
-            </div>
+            {descriptionComplete}
+            <ul className={style.listIncludes}>
+              {includes.map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+            <button className={style.showMoreButton} onClick={toggleDescription}>
+              Leer menos
+            </button>
+          </div>
           ) : (
             <div className={style.textInfo}>
               {descriptionResume}
