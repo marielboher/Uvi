@@ -16,7 +16,7 @@ export default function CardService({
   services,
   setCheckState,
 }) {
-  const isGuideService = character === "Guía de prompts de Chat GPT";
+  const isGuideService = character === "Guía de ayuda profesional";
 
   const [showMore, setShowMore] = useState(isOpen || false);
   const [isChecked, setIsChecked] = useState(false);
@@ -82,16 +82,19 @@ export default function CardService({
         <div className={style.infoMore} data-isopen={isOpen}>
           {showMore ? (
             <div className={style.infoMoreContent} data-isopen={isOpen}>
-            {descriptionComplete}
-            <ul className={style.listIncludes}>
-              {includes.map((item, index) => (
-                <li key={index}>{item}</li>
-              ))}
-            </ul>
-            <button className={style.showMoreButton} onClick={toggleDescription}>
-              Leer menos
-            </button>
-          </div>
+              {descriptionComplete}
+              <ul className={style.listIncludes}>
+                {includes.map((item, index) => (
+                  <li key={index}>{item}</li>
+                ))}
+              </ul>
+              <button
+                className={style.showMoreButton}
+                onClick={toggleDescription}
+              >
+                Leer menos
+              </button>
+            </div>
           ) : (
             <div className={style.textInfo}>
               {descriptionResume}
@@ -105,7 +108,11 @@ export default function CardService({
           )}
         </div>
         {isGuideService ? (
-          <Link to={"http://uvi.ar/docs/guia_profesional_uvi.pdf"} className={style.downloadLink} target="_blank">
+          <Link
+            to={"http://uvi.ar/docs/guia_profesional_uvi.pdf"}
+            className={style.downloadLink}
+            target="_blank"
+          >
             <button className={style.downloadButton}>Descargar</button>
           </Link>
         ) : (

@@ -81,11 +81,11 @@ export default function About() {
         <div className={style.barra}></div>
         <h3>Nosotros</h3>
         <p className={style.description}>
-        Somos una plataforma enfocada en el asesoramiento laboral para mejorar las oportunidades laborales de profesionales en búsqueda de empleo. Contamos con un equipo de especialistas en recursos humanos con una gran vocación y compromiso por el logro de resultados que trabajan en conjunto con los profesionales para optimizar su currículum vitae, perfil de LinkedIn y el entrenamiento para entrevistas laborales para estar mejor preparados para las oportunidades que se presenten.
+        Somos una plataforma enfocada en el asesoramiento para mejorar las oportunidades laborales de profesionales en búsqueda de empleo. Contamos con un equipo de especialistas en recursos humanos con una gran vocación y compromiso por el logro de resultados que se dedican a optimizar el currículum vitae, perfil de LinkedIn y preparar a los profesionales para entrevistas mejorando sus oportunidades y posibilidades de conseguir el empleo que buscan.
         </p>
         <h2 className={style.subTitle}>Nuestra Mision</h2>
         <p className={style.description}>
-        Buscamos disminuir la dificultad que tienen muchas personas por diferentes razones para acceder a oportunidades laborales. Promovemos la idea de que el talento y los valores éticos son las cualidades más importantes de un profesional. Creemos que una adecuada orientación conducen al éxito de los profesionales y empresas y que una relación de compromiso y honestidad mutua son la clave para sostenerlo en el tiempo.
+        Buscamos disminuir la dificultad que tienen muchas personas por diferentes razones para acceder a oportunidades laborales poniendo a disposición herramientas de forma igualitaria sin importar los recursos. Promovemos la idea de que el talento y los valores éticos son las cualidades más importantes de un profesional. Creemos que una adecuada orientación conducen al éxito de los profesionales y empresas y que una relación de compromiso y honestidad mutua son la clave para sostenerlo en el tiempo.
         </p>
         <h2 className={style.subTitle}>Nuestro Equipo:</h2>
       </div>

@@ -54,7 +54,7 @@ const ProfesionalService = () => {
       descriptionResume:
         "Mejoramos tu perfil de LinkedIn brindando recomendaciones para optimizar tu visibilidad, destacar logros, potenciar tu marca personal y aumentar tus oportunidades de networking.",
       descriptionComplete:
-        "El servicio de revisión de perfil de LinkedIn maximiza tu presencia profesional en la plataforma líder de redes laborales. Nuestro equipo de expertos analizará minuciosamente tu perfil y te proporcionará comentarios detallados para mejorar tu resumen, experiencia laboral, habilidades destacadas y secciones adicionales. Te ofreceremos recomendaciones específicas para optimizar tu visibilidad, resaltar tus logros y atraer la atención de reclutadores y empleadores. Confía en nuestro servicio para potenciar tu marca personal y aumentar tus oportunidades de networking y empleo en LinkedIn. Este servicio incluye: ",
+        "El servicio de revisión de perfil de LinkedIn maximiza tu presencia profesional en la plataforma líder de redes laborales. Nuestro equipo de expertos analizará minuciosamente tu perfil y te proporcionará comentarios detallados para mejorar tu resumen, experiencia laboral, habilidades destacadas y secciones adicionales. Te ofreceremos recomendaciones específicas para optimizar tu visibilidad, resaltar tus logros y atraer la atención de reclutadores y empleadores. Confía en nuestro servicio para potenciar tu marca personal y aumentar tus oportunidades de networking y empleo en LinkedIn. Este servicio incluye:",
       includes: [
         "Atención personalizada ",
         "Revisión de perfil existente de LinkedIn ",
@@ -71,7 +71,7 @@ const ProfesionalService = () => {
       descriptionResume:
         "Creamos un currículum profesional de alta calidad diseñado especialmente según tus preferencias y necesidades",
       descriptionComplete:
-        "El servicio de armado de CV está diseñado para brindarte un currículum profesional y efectivo que resalte tus habilidades y experiencia. Nuestro equipo de expertos en redacción de CV colaborará contigo para recopilar la información necesaria y presentarla de manera clara y atractiva. Nos aseguramos de resaltar tus logros, destacar tus capacidades y adaptar el formato y diseño según tus necesidades y objetivos profesionales. Con nuestro servicio de armado de CV, contarás con un documento de alta calidad que te ayudará a destacar entre los demás candidatos y aumentar tus oportunidades de conseguir el trabajo deseado.",
+        "El servicio de armado de CV está diseñado para brindarte un currículum profesional y efectivo que resalte tus habilidades y experiencia. Nuestro equipo de expertos en redacción de CV colaborará contigo para recopilar la información necesaria y presentarla de manera clara y atractiva. Nos aseguramos de resaltar tus logros, destacar tus capacidades y adaptar el formato y diseño según tus necesidades y objetivos profesionales. Con nuestro servicio de armado de CV, contarás con un documento de alta calidad que te ayudará a destacar entre los demás candidatos y aumentar tus oportunidades de conseguir el trabajo deseado. Este serviciio incluye:",
       includes: [
         "Atención personalizada ",
         "Revisión de información existente del CV ",
@@ -89,7 +89,7 @@ const ProfesionalService = () => {
       descriptionResume:
         "Creamos tu perfil de LinkedIn para resaltar tus habilidades, experiencia y logros, optimizamos secciones y palabras clave para maximizar tu visibilidad.",
       descriptionComplete:
-        "El servicio de armado de perfil de LinkedIn te ofrece la oportunidad de destacarte en la plataforma profesional más importante del mercado laboral actual. Nuestro equipo de expertos trabajará contigo para crear y optimizar estratégicamente tu perfil de LinkedIn, resaltando tus habilidades, experiencia y logros. Creamos un resumen atractivo, optimizamos las secciones de experiencia y educación, y agregamos palabras clave relevantes para mejorar tu visibilidad y captar la atención de reclutadores y empleadores potenciales. Con nuestro servicio, estarás posicionado de manera óptima para expandir tu red de contactos profesionales y aprovechar nuevas oportunidades laborales en LinkedIn.",
+        "El servicio de armado de perfil de LinkedIn te ofrece la oportunidad de destacarte en la plataforma profesional más importante del mercado laboral actual. Nuestro equipo de expertos trabajará contigo para crear y optimizar estratégicamente tu perfil de LinkedIn, resaltando tus habilidades, experiencia y logros. Creamos un resumen atractivo, optimizamos las secciones de experiencia y educación, y agregamos palabras clave relevantes para mejorar tu visibilidad y captar la atención de reclutadores y empleadores potenciales. Con nuestro servicio, estarás posicionado de manera óptima para expandir tu red de contactos profesionales y aprovechar nuevas oportunidades laborales en LinkedIn. Este servicio incluye:",
       includes: [
         "Atención personalizada ",
         "Creación de un nuevo perfil de LinkedIn u optimización total del existente ",
@@ -102,7 +102,7 @@ const ProfesionalService = () => {
       number: 5,
       check: checkState,
 
-      text: "Armado de carta de presentación",
+      text: "Carta o correo de presentación",
       descriptionResume:
         "Creamos una carta de presentación diseñada para brindarte una herramienta efectiva que te ayudará a destacar y causar una excelente impresión en cualquier proceso de solicitud de empleo.",
       descriptionComplete:
@@ -135,11 +135,11 @@ const ProfesionalService = () => {
     {
       number: 7,
       check: checkState,
-      text: "Guía de prompts de Chat GPT",
+      text: "Guía de ayuda profesional",
       descriptionResume:
-        "La guía de prompts de Chat GPT para profesionales en búsqueda de empleo ofrece una variedad de preguntas predefinidas para utilizar en conversaciones con el modelo de Chat GPT y recibir respuestas relevantes durante el proceso de búsqueda de empleo.",
+        "La guía de ayuda profesional ofrece información útil y una variedad de preguntas predefinidas para utilizar en conversaciones con el modelo de Chat GPT y recibir respuestas relevantes durante el proceso de búsqueda de empleo.",
       descriptionComplete:
-        "La guía de prompts de Chat GPT es una herramienta esencial para profesionales en búsqueda de empleo. Al utilizar las preguntas predefinidas en conversaciones con el modelo de Chat GPT, los usuarios pueden obtener respuestas personalizadas y valiosas sobre la redacción de currículums, preparación para entrevistas y estrategias de búsqueda de empleo. Esta guía les proporciona orientación práctica y consejos útiles, lo que les permite mejorar su proceso de búsqueda de empleo y aumentar sus posibilidades de éxito. Este servicio incluye: ",
+        "La guía de ayuda profesional es una herramienta esencial para profesionales en búsqueda de empleo. Al utilizar las preguntas predefinidas en conversaciones con el modelo de Chat GPT, los usuarios pueden obtener respuestas personalizadas y valiosas sobre la redacción de currículums, preparación para entrevistas y estrategias de búsqueda de empleo. Esta guía les proporciona orientación práctica y consejos útiles, lo que les permite mejorar su proceso de búsqueda de empleo y aumentar sus posibilidades de éxito. Este servicio incluye: ",
       includes: [
         "Guía de prompts de Chat GPT en formato PDF",
         "Descarga sin costo",
@@ -148,7 +148,6 @@ const ProfesionalService = () => {
     },
   ]);
 
-  
   const [selectedServicePrices, setSelectedServicePrices] = useState({});
 
   useEffect(() => {
@@ -259,7 +258,7 @@ const ProfesionalService = () => {
           form.current.reset();
           setFile(null);
           setErrors({});
-          window.open("http://ayudar.ar/uvi", "_blank");
+          window.open("https://ko-fi.com/uvi_ar", "_blank");
         },
         (error) => {
           console.log(error.text);

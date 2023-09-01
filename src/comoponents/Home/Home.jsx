@@ -136,7 +136,7 @@ export default function Home() {
   
         <div className={style.contentInfo}>
           <h6>
-          Mejora tu perfil profesional mediante una donación con nuestros servicios de asesorías laborales o suscribite sin costo a nuestro boletín de recomendaciones de perfiles destacados para empresas.
+          Mejora tu perfil profesional mediante una donación con nuestros servicios de asesorías laborales o suscribite sin costo a nuestro boletín de recomendaciones de perfiles destacados para empresas
           </h6>
           <div className={style.contentButtons}>
             <Link to="services">
