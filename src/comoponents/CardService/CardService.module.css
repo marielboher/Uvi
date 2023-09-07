@@ -141,6 +141,10 @@
   margin: 5px 0 5px 0;
   font-size: 1rem;
 }
+.noBullet {
+  list-style-type: none;
+}
+
 
 @media (max-width: 650px) {
   .contentAll {

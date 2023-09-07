@@ -5,6 +5,8 @@ import logoFooter from "../../assets/logo2.png";
 import { TiMail, TiSocialLinkedinCircular } from "react-icons/ti";
 import emailjs from "@emailjs/browser";
 import toast, { Toaster } from "react-hot-toast";
+import { BsLinkedin } from "react-icons/bs";
+import { MdEmail } from "react-icons/md";
 
 const notifySuccess = () => toast.success("Formulario enviado con éxito!");
 
@@ -154,33 +156,31 @@ export default function Form() {
         </form>
         <div className={style.contentImgInfo}>
           <img src={logo} alt="" />
-          <a
+          {/* <a
             href="https://www.linkedin.com/company/universo-i/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <TiSocialLinkedinCircular size="50" className={style.networks} />
-          </a>
+            <BsLinkedin size="50" className={style.networks} />
+          </a> */}
         </div>
       </div>
       <div className={style.infoUvi}>
-      <div className={style.contentText}>
-        <div className={style.networks}>
-          <a
-            href="https://www.linkedin.com/company/universo-i/"
-            target="_blank"
-          >
-            <TiSocialLinkedinCircular size="40" className={style.logos} />
-          </a>
-          <p>
-            contacto@uvi.com.ar
-          </p>
-          <a href="mailto:info@uvi.com.ar" target="_blank">
-            <TiMail size="40" className={style.logos} />
-          </a>
+        <div className={style.contentText}>
+          <div className={style.networks}>
+            <a
+              href="https://www.linkedin.com/company/universo-i/"
+              target="_blank"
+            >
+              <BsLinkedin size="25" className={style.logos} />
+            </a>
+            <p>info@uvi.com.ar</p>
+            <a href="mailto:info@uvi.com.ar" target="_blank">
+              <MdEmail size="30" className={style.logos} />
+            </a>
+          </div>
+          <img src={logoFooter} className={style.logoFooter}></img>
         </div>
-        <img src={logoFooter} className={style.logoFooter}></img>
-      </div>
       </div>
     </div>
   );

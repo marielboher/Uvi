@@ -17,6 +17,7 @@ export default function CardService({
   setCheckState,
 }) {
   const isGuideService = character === "Guía de ayuda profesional";
+  const thisServiceIncludes = includes === "Este servicio incluye:";
 
   const [showMore, setShowMore] = useState(isOpen || false);
   const [isChecked, setIsChecked] = useState(false);
